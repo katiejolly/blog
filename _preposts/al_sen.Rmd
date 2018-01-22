@@ -1,0 +1,52 @@
+---
+output: 
+  md_document:
+    variant: markdown_github
+---
+
+```{r}
+library(rtweet)
+```
+
+```{r}
+appname <- "#ALsen"
+
+key <- "w1XGLaPr28t5yT57METQAAgWs"
+secret <- "uYbjkKhqtrunVsrnTZMLtUBKl9qD3WWd5xLKibUykxs8nSiD36"
+
+token <- "2832470440-QhzAqBmPaNjlmZD59yuT07ukZGoR5Hx2lXEROZb"
+token_secret <- "dIqM8bAPwtPXQxPaYZDNbcJhg5R5Wh1Cd7FGrfJI1Om8E"
+```
+
+```{r}
+twitter_token <- create_token(
+  app = appname,
+  consumer_key = key,
+  consumer_secret = secret
+)
+```
+
+```{r echo=FALSE}
+# collecting tweets with #ALsen
+
+al_sen <- search_tweets("#alsen", 
+                        n = 18000,
+                        include_rts = FALSE)
+```
+
+```{r}
+# collecting tweets with needle 
+
+nyt_needle <- search_tweets("#nytneedle",
+                            n = 18000,
+                            include_rts = FALSE,
+                            retryonratelimit = TRUE)
+```
+
+```{r}
+net_neutrality <- search_tweets("#netneutrality",
+                                n = 18000,
+                                include_rts = FALSE,
+                                retryonratelimit = TRUE)
+```
+

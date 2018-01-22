@@ -1,0 +1,8 @@
+---
+title: "#WITbragday"
+author: "Katie Jolly"
+date: "January 11, 2018"
+output: html_document
+---
+
+Last summer (August 2017) I started a project looking at the tweets from #WITbragday. It was a small project at first, a way for me to learn more about text analysis, but quickly grew into something more. I presented it at DC Hack & Tell thanks to encouragement from a few women. It was the first time I had given a presentation outside of school and it was a great experience for me! I also submitted it to the [Electronic Undergraduate Statistics Research Conference](https://www.causeweb.org/usproc/eusrc/2017) in October 2017 with the help of many people (professors, friends, and mentors), and successfully gave my first conference presentation in November. Since then, I've continued to work on the project, using the data to practice new things. Now I want to do a better job of visualizing the results of topic modeling with the `tidytext` package.  

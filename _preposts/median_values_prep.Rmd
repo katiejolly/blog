@@ -1,0 +1,130 @@
+---
+title: "Housing markets in Charlottesville"
+author: "Katie Jolly"
+date: "December 19, 2017"
+output: html_document
+---
+
+```{r message = FALSE, warning = FALSE}
+library(tidycensus) # getting census data
+library(tigris) # geographic data for mapping
+library(leaflet) # interactive maps
+library(tidyverse) # wrangling and manipulating the data
+
+options(tigris_use_cache = TRUE) # cache all the tiger line files we get from tigris
+```
+
+
+```{r warning = FALSE, message = FALSE}
+cville_10 <- get_acs(geography = "tract", table = "B25077", state = "VA", county = "Charlottesville City", survey = "acs5", year = 2010, cache_table = TRUE) # data in Charlottesville for 2010
+
+alb_10 <- get_acs(geography = "tract", table = "B25077", state = "VA", county = "Albemarle", survey = "acs5", year = 2010, cache_table = TRUE) # Albemarle County in 2010
+
+cville_15 <- get_acs(geography = "tract", table = "B25077", state = "VA", county = "Charlottesville City", survey = "acs5", year = 2015, cache_table = TRUE) # Cville in 2015
+
+alb_15 <- get_acs(geography = "tract", table = "B25077", state = "VA", county = "Albemarle", survey = "acs5", year = 2015, cache_table = TRUE) # albemarle cnty in 2015
+```
+
+```{r}
+colnames(cville_10) <- c("GEOID", "name", "variable", "estimate_10", "moe_10")
+colnames(cville_15) <- c("GEOID", "name", "variable", "estimate_15", "moe_15")
+colnames(alb_10) <- c("GEOID", "name", "variable", "estimate_10", "moe_10")
+colnames(alb_15) <- c("GEOID", "name", "variable", "estimate_15", "moe_15")
+```
+
+
+```{r}
+cville <- cville_10 %>%
+  full_join(cville_15, by = c("GEOID", "name", "variable"))
+
+albemarle <- alb_10 %>%
+  full_join(alb_15, by = c("GEOID", "name", "variable"))
+
+cville_albemarle <- rbind(cville, albemarle)
+```
+
+
+```{r}
+cville_albemarle <- cville_albemarle %>%
+  mutate(estimate_10 = ifelse(moe_10 >= .33 * estimate_10, NA, estimate_10),
+         estimate_15 = ifelse(moe_15 >= .33 * estimate_15, NA, estimate_15))
+```
+
+```{r}
+median_10 <- median(cville_albemarle$estimate_10, na.rm = TRUE)
+median_15 <- median(cville_albemarle$estimate_15, na.rm = TRUE)
+
+cville_albemarle <- cville_albemarle %>%
+  mutate(adj_10 = round(estimate_10/median_10, 2),
+         adj_15 = round(estimate_15/median_15, 2),
+         pct_change_adj = 100 * round((adj_15 - adj_10)/adj_10, 2))
+```
+
+```{r}
+tracts_cville <- tigris::tracts(state = "VA", county = c("Charlottesville City", "Albemarle County"))
+
+tracts_joined <- tigris::geo_join(spatial_data = tracts_cville, data_frame = cville_albemarle, by = "GEOID", how = "left")
+```
+
+```{r}
+bins <- c(-30, -15 ,0, 15, 30)
+pal <- colorBin("RdYlBu", domain = tracts_joined$pct_change_adj, bins = bins)
+
+labels <- ifelse(!is.na(tracts_joined$pct_change_adj), 
+                 sprintf(
+                  "<strong>%s</strong><br/>%g%% change in median home value <br> relative to area median value, 2010-2015",
+                  tracts_joined$name, 
+                  tracts_joined$pct_change_adj), 
+                       sprintf(
+                  "<strong>%s</strong><br/>There isn't enough data for this <br/> tract to calculate percent change",
+                  tracts_joined$name
+         )) %>% 
+          lapply(htmltools::HTML)
+
+m <- leaflet(tracts_joined) %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(
+   fillColor = ~pal(pct_change_adj),
+    weight = 1,
+    opacity = 1,
+    color = "gray",
+    dashArray = "2",
+    fillOpacity = 0.5,
+    highlight = highlightOptions(
+      weight = 3,
+      color = "#666",
+      dashArray = "",
+      fillOpacity = 0.7,
+      bringToFront = FALSE),
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto")
+  ) %>%
+  addLegend(pal = pal, 
+            values = ~pct_change_adj, 
+            opacity = 0.7, 
+            title = "Change in relative median home values, 2010-2015",
+            position = "bottomright",
+            labFormat = labelFormat(suffix = "%"))
+
+m
+```
+
+```{r message = FALSE, warning = FALSE}
+roads_va <- primary_secondary_roads(state = "VA")
+
+roads_29 <- subset(roads_va, grepl("29", FULLNAME)) # find all the instances of I-81 
+```
+
+```{r}
+cville_29 <- rgeos::gIntersection(roads_29, tracts_joined)
+
+m %>%
+  addPolylines(data = cville_29,
+               color = "black",
+               opacity = 0.6,
+               weight = 2)
+```
+

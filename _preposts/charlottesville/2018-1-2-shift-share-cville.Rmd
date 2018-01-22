@@ -1,0 +1,56 @@
+---
+title: "Shift Share in Cville: A job market analysis"
+author: "Katie Jolly"
+date: "January 3, 2018"
+output: html_document
+---
+
+```{r include = FALSE}
+options(scipen = 999)
+```
+
+
+This past semester I worked on a fun project analyzing Charlottesville, VA. I chose that particular city for a few reasons. (1) It had recently come into the national spotlight after the neo-nazi march in August. (2) Charlottesville is a relatively small city, so I thought patterns might be easier to see than in a large and more complex city. (3) I grew up a few hours from Charlottesville and have many friends at UVA, so I hear about the city a lot but didn't actually know much about it. 
+
+This post is the first part (of three) of that analysis. I will use a shift share analysis to look at job market trends. [Shift share](http://www.economicmodeling.com/2011/12/05/understanding-shift-share-2/) tries to separate regional employment trends into national trends and "unique regional factors." So, in other words, how much of the job growth (or loss) in Charlottesville follows the national trend and how much of it is because of something unique to Charlottesville. 
+
+```{r message=FALSE, warning=FALSE}
+# packages used
+
+library(tidyverse) # data manipulation, plotting, wrangling
+```
+
+
+```{r message=FALSE}
+shift_share_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTonkZXYWROy3mV7lu-BOCwdklQx4cVdbygvuJ98jy1QeQtjycvLwf-hu1Ugmmy1zrRXbon1LkypITq/pub?output=csv")
+```
+
+```{r}
+shift_share_data <- shift_share_data %>%
+  mutate(cv_pct_chg_10_16 = (cville_16 - cville_10)/cville_10,
+         cv_pct_chg_00_16 = (cville_16 - cville_00)/cville_00,
+         us_pct_chg_10_16 = (us_16 - us_10)/us_10,
+         us_pct_chg_00_16 = (us_16 - us_00)/us_00,
+         va_pct_chg_10_16 = (va_16 - va_10)/va_10,
+         va_pct_chg_00_16 = (va_16 - va_00)/va_00)
+```
+
+```{r}
+local_growth <- function(regional_growth, national_growth, regional_emp) {
+  x <- 1000*(regional_emp * (regional_growth - national_growth))
+  return(x)
+}
+
+mix_effect <- function(total_national_growth, national_growth, regional_emp) {
+  x <- 1000 * (regional_emp * (national_growth - total_national_growth))
+  return(x)
+}
+```
+
+```{r}
+shift_share_data <- shift_share_data %>%
+  mutate(local_growth_us_10_16= local_growth(cv_pct_chg_10_16, us_pct_chg_10_16, cville_10),
+         local_growth_va_10_16 = local_growth(cv_pct_chg_10_16, va_pct_chg_10_16, cville_10),
+         mix_us_10_16 = mix_effect(0.10696369, shift_share_data$us_pct_chg_10_16, shift_share_data$cville_10))
+```
+

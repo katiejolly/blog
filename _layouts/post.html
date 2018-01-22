@@ -1,0 +1,72 @@
+---
+layout: default
+---
+{% if page.htmlwidgets %}
+{% for html_dep in site.static_files %}
+  {% if html_dep.path contains 'htmlwidgets_deps/' %}
+    {% assign start = "<script src=" | append: {{site.baseurl}} %}
+    {{html_dep.path | prepend: start | append: "></script>" }}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    {% if page.author %}
+        {{ page.author }}
+    {% else %}
+        {{ site.author.name }}
+    {% endif %}
+
+    {% if page.date %}
+      <br>
+      <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
+    {% endif %}
+  </div>
+
+  <h1>{{ page.title }}</h1>
+  <div class="tags">
+      {% assign sortedCategories = page.categories | sort %}
+      {% for category in sortedCategories %}
+          <span class="tag">
+              <a href="/blog/category/{{ category }}">#{{ category }}</a>
+          </span>
+      {% endfor %}
+  </div>
+  <div class="post-line"></div>
+
+  {{ content }}
+
+</div>
+
+{% if page.comments == true %}
+{% include disqus.html %}
+{% endif %}
+
+<div class="related">
+    <h3>Related Posts</h3>
+    {% assign firstCategory = page.categories | first %}
+    {% assign relatedCount = 0 %}
+    {% for related in site.categories[firstCategory] %}
+        {% unless page.permalink == related.permalink %}
+            {% assign relatedCount = relatedCount | plus: 1 %}
+            <a href="{{related.permalink}}">{{ related.title }}</a>
+        {% endunless %}
+
+        {% if relatedCount == 3 %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if page.next.url %}
+    <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+  {% endif %}
+  {% if page.previous.url %}
+    <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+  {% endif %}
+
+  <a href="#" class="top">Top</a>
+</div>

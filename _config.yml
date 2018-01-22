@@ -1,0 +1,48 @@
+# Permalinks
+permalink:      /:year-:month-:day/:title
+
+# Setup
+title:          katie jolly
+paginate:       5
+baseurl:        "/blog"
+url:            "http://katiejolly.io/blog/"
+
+# Assets
+sass:
+  sass_dir:     _sass
+  style:        :compressed
+
+# Build settings
+markdown:       kramdown
+
+# About
+author:
+  name:         Katie Jolly
+  url:          http://katiejolly.io
+  email:        katiejolly6@gmail.com
+
+# Custom vars
+version:        3.4.1
+github:
+  repo:         https://github.com/katiejolly/blog
+
+# Gems
+plugins:
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-feed
+
+# categories collection
+collections:
+  category:
+    output: true
+  tags:
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"

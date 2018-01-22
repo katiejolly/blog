@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Random Rupi: Generating Rupi Kaur-style poems with Markov chains &middot; katie jolly
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+</head>
+
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/blog/">
+          <h2 class="nav-title">katie jolly</h2>
+        </a>
+        <ul>
+          <li><a href="http://katiejolly.io">home</a></li>
+          <li><a href="/blog/">posts</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <main>
+      <div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    
+        Katie Jolly
+    
+
+    
+      <br>
+      <span>on&nbsp;</span><time datetime="2018-01-04 00:00:00 -0500">January 04, 2018</time>
+    
+  </div>
+
+  <h1>Random Rupi: Generating Rupi Kaur-style poems with Markov chains</h1>
+  <div class="tags">
+      
+      
+          <span class="tag">
+              <a href="/blog/category/R">#R</a>
+          </span>
+      
+          <span class="tag">
+              <a href="/blog/category/markovchain">#markovchain</a>
+          </span>
+      
+          <span class="tag">
+              <a href="/blog/category/poems">#poems</a>
+          </span>
+      
+  </div>
+  <div class="post-line"></div>
+
+  <h1 id="a-short-intro">A short intro</h1>
+
+<p>I was listening to the <a href="http://lineardigressions.com/episodes/2017/12/24/re-release-random-kanye">Random Kanye</a> episode of Linear Digressions (100% recommend!) and wanted to try Markov chain poetry for myself. Admittedly, the only poetry I read is <a href="https://rupikaur.com/">Rupi Kaur</a>. After searching a bit, I could only find a random generator in Python so I decided to try to make one with R!</p>
+
+<p>Let’s begin, and make some art!</p>
+
+<h1 id="gathering-and-cleaning-the-data">Gathering and cleaning the data</h1>
+
+<p>To do this project, we will use the <code class="highlighter-rouge">readtext</code>, <code class="highlighter-rouge">tidyverse</code>, and <code class="highlighter-rouge">Markovchain</code> packages.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">readtext</span><span class="p">)</span><span class="w"> </span><span class="c1"># reading in all of the text files</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w"> </span><span class="c1"># wrangling data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">markovchain</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>I found text data for this project from Albert Xu’s <a href="https://github.com/albertkx/rupi-kaur-poetry">Rupi Kaur Poetry repo</a>. Many thanks!</p>
+
+<p>If you’re running this analysis on your own machine, I’ve also stored the data on my <a href="https://github.com/katiejolly/blog/tree/gh-pages/_preposts/rupi_kaur">github repo</a> for this project.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rupi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">readtext</span><span class="p">(</span><span class="s2">"txt_files/*.txt"</span><span class="p">)</span><span class="w"> </span><span class="c1"># take all the files from this subdirectory</span><span class="w">
+
+</span><span class="n">glimpse</span><span class="p">(</span><span class="n">rupi</span><span class="p">)</span><span class="w"> </span><span class="c1"># take a look at what we have</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Observations: 202
+## Variables: 2
+## $ doc_id &lt;chr&gt; "rupi0.txt", "rupi1.txt", "rupi10.txt", "rupi100.txt", ...
+## $ text   &lt;chr&gt; "how is it so easy for you\nto be kind to people he ask...
+</code></pre></div></div>
+
+<p>Using the <code class="highlighter-rouge">readtext</code> package, I combined all 202 poems (stored in .txt files) into one dataframe with the <code class="highlighter-rouge">readtext</code> function. Each poem is a row, with its original filename listed as a variable for reference.</p>
+
+<p>Next, we need to clean up the data a bit. I’m going to take out punctuation (except apostrophes) and the newline characters (<code class="highlighter-rouge">\n</code>). Both of these will use <code class="highlighter-rouge">gsub</code>!</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rupi</span><span class="o">$</span><span class="n">text</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gsub</span><span class="p">(</span><span class="s2">"\n"</span><span class="p">,</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w"> </span><span class="n">rupi</span><span class="o">$</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="c1"># replace newline characters with a space</span><span class="w">
+</span><span class="n">rupi</span><span class="o">$</span><span class="n">text</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gsub</span><span class="p">(</span><span class="s2">"[^[:alnum:][:space:]']"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">rupi</span><span class="o">$</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="c1"># remove all punctuation</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To run a Markov chain, we need a vector of the terms. To do this I’ll first split the terms on spaces and the use <code class="highlighter-rouge">unlist</code> to create the vector.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">terms</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">unlist</span><span class="p">(</span><span class="n">strsplit</span><span class="p">(</span><span class="n">rupi</span><span class="o">$</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">))</span><span class="w"> </span><span class="c1"># create a vector of all the words from the poems, split on spaces</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We now have 5599 words to work with in our Markov chain poems!</p>
+
+<h1 id="fitting-the-poem-generator">Fitting the poem generator</h1>
+
+<h2 id="quick-intro-to-markov-chains">Quick intro to Markov chains</h2>
+
+<p>Markov chains are a way to generate data based on probabilities that something will follow something else. To be more specific in the case of this project, the Markov chain will choose the next word in the poem based on the probability that it comes after the word we have just chosen. Importantly, each “step” is independent of all the other steps.</p>
+
+<p>Let’s say we start with my name, “Katie”. For the sake of simplicity we have three other words in our vector: “is”, “jumps”, and “tree”. “Is” will follow “Katie” about 70% of the time, “jumps” will follow 29% of the time, and “tree” will follow 1% of the time. So, on 70% of the steps from “Katie”, the Markov chain will follow it with “is”, and so on. This process will create our short poems! For a more in-depth overview, this <a href="http://setosa.io/ev/Markov-chains/">blog post</a> will help!</p>
+
+<h2 id="the-markov-chain-poems">The Markov chain poems</h2>
+
+<p>We will fit our model using <code class="highlighter-rouge">markovchainFit</code>. The only input is our vector of words called <code class="highlighter-rouge">terms</code>. I’m keeping the default fit method, which is <code class="highlighter-rouge">method = MLE</code>. Usually, I would set the seed (<code class="highlighter-rouge">set.seed</code>) but in the case of this project, I think half the fun is not knowing what we are going to get, so I’m leaving out that step.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">poem_fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">markovchainFit</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now we are all set to write poems!</p>
+
+<p>Using the <code class="highlighter-rouge">markovchainSequence</code> function, we can write a poem of any length. I’ll do a few different ones to show some of the possibilities!</p>
+
+<p>With this function, we are creating a Markov chain of <code class="highlighter-rouge">n</code> words, then putting them together with a space in between to create a poem.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">paste</span><span class="p">(</span><span class="n">markovchainSequence</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="n">markovchain</span><span class="o">=</span><span class="n">poem_fit</span><span class="o">$</span><span class="n">estimate</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "me kiss me as if you tell if it doesnt leave when we are some people even touching me when they know what im a"
+</code></pre></div></div>
+
+<h2 id="some-markov-chain-poem-examples-with-different-lengths">Some Markov chain poem examples (with different lengths)</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] "tell him than whole city big in particular you look like rubber against an easy person who live with the way they realize how at"
+
+## [1] "shocked it doesnt leave a mind to the rest of the sun to give you have spent less color of i do not that were the conversation going what i"
+
+## [1] "than painful love is the stomach 16 breathe the soft enough milk and this will be put my tongue so"
+
+## [1] "really believe them actually loving you themselves did i will taste the only whispers into"
+
+## [1] "you thought you out of man tell if he still"
+</code></pre></div></div>
+
+
+</div>
+
+<div class="related">
+    <h3>Related Posts</h3>
+    
+    
+    
+        
+
+        
+    
+</div>
+
+<div class="pagination">
+  
+  
+
+  <a href="#" class="top">Top</a>
+</div>
+
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="2018-01-04 13:35:27 -0500">2018</time> Katie Jolly. The code for this site lives <a href="https://github.com/katiejolly/blog">here</a>.
+      </span>
+    </footer>
+  </body>
+</html>

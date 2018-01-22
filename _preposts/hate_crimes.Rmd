@@ -1,0 +1,26 @@
+---
+title: "Using tidytext to analyze hate crime headlines"
+author: "Katie Jolly"
+date: "January 11, 2018"
+output: html_document
+---
+
+```{r}
+library(tidyverse) # working with the raw data
+library(tidytext) # analyzing the data
+```
+
+
+```{r}
+hate_crimes <- read_csv("https://raw.githubusercontent.com/GoogleTrends/data/gh-pages/20170816_Documenting_Hate.csv")
+```
+
+```{r}
+hate_words <- hate_crimes %>%
+  unnest_tokens(word, `Article title`)
+```
+
+```{r}
+
+```
+
