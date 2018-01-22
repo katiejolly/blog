@@ -198,7 +198,7 @@ ggplot() +
   theme(axis.title = element_text())
 ```
 
-![plot of linear relationship]({{ "/_includes/heat-reports/unnamed-chunk-6-1.png" | absolute_url }})
+![](../_includes/heat-reports/unnamed-chunk-6-1.png)
 
 
 Thoughts and next steps
