@@ -197,8 +197,7 @@ ggplot() +
        caption = "Sources: Analyze Boston, ACS") +
   theme(axis.title = element_text())
 ```
-
-![](/_includes/heat-reports/unnamed-chunk-6-1.png)
+![plot of linear relationship]({{ "/_includes/heat-reports/unnamed-chunk-6-1.png" | absolute_url }})
 
 Thoughts and next steps
 =======================
