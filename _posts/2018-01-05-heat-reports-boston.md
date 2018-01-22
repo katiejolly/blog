@@ -198,7 +198,8 @@ ggplot() +
   theme(axis.title = element_text())
 ```
 
-![](https://github.com/katiejolly/blog/blob/master/_includes/heat-reports/unnamed-chunk-6-1.png)
+![plot of linear relationship]({{ "/_includes/heat-reports/unnamed-chunk-6-1.png" | absolute_url }})
+
 
 Thoughts and next steps
 =======================
