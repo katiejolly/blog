@@ -204,4 +204,6 @@ ggplot() +
 Thoughts and next steps
 =======================
 
-Of course, there are other variables that help explain the variance. One such variable might be the percent of homes that are renter-occupied (as opposed to owner-occupied). In one of my next posts, I'll go through my site selection process for choose community centers/libraries/other public spaces in which Boston should advertise heating-assistance programs. I'd also love to hear your thoughts on other variables to look at or ways to improve my analysis. Thanks for reading!
+Of course, there are other variables that help explain the variance. One such variable might be the percent of homes that are renter-occupied (as opposed to owner-occupied). Another (important) angle to consider is the spatial nature of the data. I want to look at measures like spatial autocorrelation to have a better understanding of the distribution of 311 reports.
+
+In one of my next posts, I'll go through my site selection process for choose community centers/libraries/other public spaces in which Boston should advertise heating-assistance programs. I'd also love to hear your thoughts on other variables to look at or ways to improve my analysis. Thanks for reading!
