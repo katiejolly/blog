@@ -198,7 +198,7 @@ ggplot() +
   theme(axis.title = element_text())
 ```
 
-![]({{ site.url }}/assets/image.png)
+![]({{ site.url }}/assets/figure.png)
 
 
 Thoughts and next steps
