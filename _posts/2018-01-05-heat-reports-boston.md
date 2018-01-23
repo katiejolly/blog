@@ -111,7 +111,7 @@ bos_joined <- tigris::geo_join(spatial_data = bos_tracts,
                        by = "GEOID")
 ```
 
-Reverse geocoding
+Lat Long to Census Tract
 =================
 
 In order to use `sp::over()` to aggregate the lat long points to the census tract level, we need the lat long points to be a `SpatialPointsDataFrame`.
