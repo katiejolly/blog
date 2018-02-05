@@ -1,3 +1,12 @@
+---
+layout: post
+title: "On struggling with aes(): an intro to writing functions with ggplot outputs"
+date: 2018-02-05
+comments: true
+<!-- categories: R ggplot -->
+---
+
+
 Last week I was trying to programmatically create plots and came across so many errors! Mostly I was not understanding why my variables were translating from inputs in my function to inputs for `ggplot2`. After I figured out my error it seemed simple, but I'm hoping my issues figuring it out can be useful to other people, so you don't have to spend as much time figuring it out!
 
 Introducing my problem
