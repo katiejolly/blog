@@ -81,7 +81,7 @@ augment(poll_lm) %>%
     labs(x = "Poll average", y = "Election results")
 ```
 
-![plot of linear relationship]({{/assets/aes/aes1.png}})
+![original plot]({{ site.url }}/assets/aes/aes1.png)
 
 But I wanted a way to have a function that takes the model, response, and explanatory variables!
 
@@ -128,7 +128,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 plot_model(poll_lm, "poll_average", "election_result")
 ```
 
-![plot of linear relationship]({{/assets/aes/aes2.png}})
+![fixed plot]({{ site.url }}/assets/aes/aes2.png)
 
 Ta-da! Even though this is a simple example, it will be so helpful for me in the future! I'm sure there are other ways to solve this problem, so I'd love to know your favorite fix for programming with `ggplot2`.
 
