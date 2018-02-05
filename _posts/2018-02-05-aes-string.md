@@ -72,7 +72,7 @@ augment(poll_lm) %>%
     labs(x = "Poll average", y = "Election results")
 ```
 
-![](/figs/unnamed-chunk-3-1.png)
+![plot of linear relationship]({{ "/_includes/aes/aes1.png" | absolute_url }})
 
 But I wanted a way to have a function that takes the model, response, and explanatory variables!
 
@@ -98,11 +98,10 @@ plot_model(poll_lm, poll_average, election_result)
 
     ## Error in FUN(X[[i]], ...): object 'poll_average' not found
 
-![](/figs/unnamed-chunk-5-1.png)
 
 Basically it couldn't find the `poll_average` variable. I checked the spelling so many times, I thought I was going crazy.
 
-After googling around, I struck gold with the `ggplot2` article [Define aesthetic mappings programatically](Define%20aesthetic%20mappings%20programatically)! It suggested a few `aes` variations and I decided to go with `aes_string()` to be able to use string inputs in my function.
+After googling around, I struck gold with the `ggplot2` article [Define aesthetic mappings programatically](http://ggplot2.tidyverse.org/reference/aes_.html) It suggested a few `aes` variations and I decided to go with `aes_string()` to be able to use string inputs in my function.
 
 So, I tried again.
 
@@ -120,7 +119,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 plot_model(poll_lm, "poll_average", "election_result")
 ```
 
-![](/figs/unnamed-chunk-6-1.png)
+![plot of linear relationship]({{ "/_includes/aes/aes2.png" | absolute_url }})
 
 Ta-da! Even though this is a simple example, it will be so helpful for me in the future! I'm sure there are other ways to solve this problem, so I'd love to know your favorite fix for programming with `ggplot2`.
 
