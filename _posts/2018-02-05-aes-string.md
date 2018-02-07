@@ -136,3 +136,23 @@ tl;dr
 =====
 
 `aes_string` is super useful for including plots in user defined functions and can take your plots to a whole new level!
+
+Edit:
+=====
+
+Per comments, I've edited the function to be more applicable to other models!
+
+``` r
+plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
+  augment(mod) %>%
+  ggplot() +
+    geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
+    geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
+    theme_solarized() +
+    theme(axis.title = element_text()) +
+}
+
+plot_model(poll_lm, "poll_average", "election_result") + labs(x = "Poll average", y = "Election results")
+```
+
+Running this code would give the same plot, just without the hardcoded axis labels. 
