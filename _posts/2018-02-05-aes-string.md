@@ -9,6 +9,11 @@ comments: true
 
 Last week I was trying to programmatically create plots and came across so many errors! Mostly I was not understanding why my variables weren't translating from inputs in my function to inputs for `ggplot2`. After I figured out my error it seemed simple, but I'm hoping my issues figuring it out can be useful to other people, so you don't have to spend as much time on it!
 
+tl;dr
+=====
+
+`aes_string` is super useful for including plots in user defined functions and can take your plots to a whole new level!
+
 Introducing my problem
 ======================
 
@@ -132,10 +137,6 @@ plot_model(poll_lm, "poll_average", "election_result")
 
 Ta-da! Even though this is a simple example, it will be so helpful for me in the future! I'm sure there are other ways to solve this problem, so I'd love to know your favorite fix for programming with `ggplot2`.
 
-tl;dr
-=====
-
-`aes_string` is super useful for including plots in user defined functions and can take your plots to a whole new level!
 
 Edit:
 =====
