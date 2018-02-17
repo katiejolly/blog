@@ -60,7 +60,7 @@ model <- generate_markovify_model( # build the text model
 )
 ```
 
-The only other step for the text was to actually generate the messages. It was difficult because each input saying was so short that there wasn't a whole lot of probabilities to work from. It was a challenge to create enough distinct messages, but we made a workaround for that.
+The only other step for the text was to actually generate the messages. It was difficult because each input saying was so short that there weren't a whole lot of probabilities to work from. It was a challenge to create enough distinct messages, but we made a workaround for that.
 
 ```{r}
 texts_to_annotate <- markovify_text( # make the strings
