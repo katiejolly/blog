@@ -116,7 +116,7 @@ for (i in 1:nrow(friends)){
 friends$path <- all_paths # add paths to the dataset
 ```
 
-While playing around with the `ponyexpress` package, I figured it would be easier to include the images if they were stored online and GitHub seemed like the natural options. So I wrote another similar loop to create GitHub paths for the images.
+While playing around with the `ponyexpress` package, I figured it would be easier to include the images if they were stored online and GitHub seemed like the natural option. So I wrote another similar loop to create GitHub paths for the images.
 
 ```{r}
 github_paths <- c()
