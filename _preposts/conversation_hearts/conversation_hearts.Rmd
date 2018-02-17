@@ -1,0 +1,76 @@
+---
+title: "Valentine's Day heaRts"
+author: "Katie Jolly"
+date: "February 16, 2018"
+output: html_document
+---
+
+The weekend before Valentine's Day, my friend Pippa and I were sitting at our kitchen table trying to decide how to celebrate. We wanted a way to show all of our friends how much we love and appreciate them! Complicating the Valentine's a bit is the fact that we have friends in multiple countries, so delivering something in person would be impossible and sending something through the mail would add up quickly. Fairly quickly we decided to send something via email. 
+
+We were talking about the poem generator I'd built a few weeks ago and thought somewhere similar to that would be a good place to start. I'd read Sarah Lotspeich and Lucy D'Agostino McGowan's [secret sampling](http://livefreeordichotomize.com/2017/11/15/secret-sampling/) post about sending emails through R will `ponyexpress`. They'd used it to send messages about secret santa over the holidays, but it seemed like we could use that idea for sending valentines! The final idea was to randomly generate a conversation heart for each of our friends with markov chains and then send them via email with `ponyexpress`. This would also give me a chance to use the `markovifyR` package that I'd heard such good things about! 
+
+For the rest of the afternoon (we're quite skilled at procrastination) powered by Whitney Houston and Mary Chapin Carpenter we entered nearly 500 possible conversation heart sayings into a google sheet so we could both be working at the same time without too many duplicates. Some were much better than others; our creativity really started to fade around the 300 mark. The 300 to 500 range included gems such as "discount candy" and "wuts ur sign" (there are some astrology fans in my house, I unfortunately am not one of them). 
+
+To start, we needed to clean the text because we hadn't both used the same abbreviations and a few included punctuation. 
+
+```{r message = FALSE, warning = FALSE}
+# packages
+
+library(googlesheets) # read in the sheet 
+library(tidyverse) # clean the text
+library(markovifyR)
+
+# data
+
+hearts <- gs_title("conversation_hearts") # read in my conversation_hearts sheet
+
+sayings <- hearts %>%
+  gs_read(ws = 1) # the text we thought of was in the first sheet
+
+# cleaning the text
+
+sayings$text <- sayings$text %>% # standardize the words
+  str_replace_all(c("[[:punct:]]", "", 
+                    "what" = "wut", 
+                    " are " = "r", 
+                    "love" = "luv", 
+                    " for " = "4", 
+                    "too " = "2", 
+                    " to " = "2", 
+                    "your" = "ur", 
+                    "you're" = "ur", 
+                    "thanks" = "thx", 
+                    "night" = "nite", 
+                    " you are " = "ur", 
+                    "you " = "u ",
+                    " you " = " u ")) # all the abbreviations we agreed to use to be more ~hip~ 
+```
+
+Next I needed to create a model that generate the text! Luckily the `markovifyR` package has pretty good documentation and I could look to Malcolm Barrett's [Stochastic Shakespeare: Sonnets Produced by Markov Chains in R](https://malco.io/2018/01/28/shakespeare/) post for some guidance as well. 
+
+```{r}
+model <- generate_markovify_model( # build the text model
+  input_text = sayings$text, # use the text as the input
+  max_overlap_ratio = 0.85,
+  max_overlap_total = 40
+)
+```
+
+The only other step for the text was to actually generate the messages. It was difficult because each input saying was so short that there wasn't a whole lot of probabilities to work from. It was a challenge to create enough distinct messages, but we made a workaround for that.
+
+```{r}
+texts_to_annotate <- markovify_text( # make the strings
+  markov_model = model, # use the model we just made
+  maximum_sentence_length = NULL, # without a max sentence length
+  output_column_name = 'heart_sayings',
+  count = 100,
+  tries = 600,
+  only_distinct = TRUE, # we still just wanted distinct messages 
+  return_message = TRUE
+)
+```
+
+These are the sayings it built! Evidently some of our text cleaning didn't quite work but honestly that's okay with me for this type of project. None of my friends know enough R to call me out on it, I think :D And I didn't want to spend too much time doing all of the cleaning. 
+
+
+While Pippa finished up the brainstorming, I started to work on the image processing part. From blog posts I'd read `magick` has always seemed like a cool package, but until now I hadn't done much that required it. We decided to superimpose the generated text onto a heart to create the final image to send. We'd include it in the email with a bit of text for context! 
