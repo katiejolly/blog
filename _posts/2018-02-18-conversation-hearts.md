@@ -104,7 +104,7 @@ final <- texts_to_annotate %>%
 friends$text <- final$heart_sayings # add the text to the friends data for when we send them
 ```
 
-While Pippa finished up the brainstorming, I started to work on the image processing part. From blog posts I'd read `magick` has always seemed like a cool package, but until now I hadn't done much that required it. We decided to superimpose the generated text onto a heart to create the final image to send. We'd include it in the email with a bit of text for context!
+While Pippa finished up the brainstorming, I started to work on the image processing part. From blog posts I'd read, (in particular Maelle's about [creating Galentine's Day cards](http://www.masalmon.eu/2018/01/26/galentinesday/)) `magick` has always seemed like a cool package, but until now I hadn't done much that required it. We decided to superimpose the generated text onto a heart to create the final image to send. We'd include it in the email with a bit of text for context!
 
 Warning, the part ahead is definitely the least elegant! I use the dreaded for loop because I learned Python first and admittedly haven't ever really taken the time to get comfortable for `map` or `lapply`. Some day I will...
 
@@ -206,3 +206,9 @@ It produced this card!
 We loved the cards we were able to make! And we got lots of replies from friends who similarly loved the cards :D
 
 Now my house is now in an R mood so we are working on using this general outline to do some projects with the student run food co-op on campus! Right now we are just in the idea phase, but I'm having a lot of fun seeing little projects turn into impactful tools for people and causes I care about. I'm hoping to be able to write about that partnership in the near future!
+
+*Resources I used*
+
+* [Galentine's Day cards by Maelle Salmon](http://www.masalmon.eu/2018/01/26/galentinesday/)
+* [Secret sampling by Sarah Lotspeich and Lucy D'Agostino McGowan](http://livefreeordichotomize.com/2017/11/15/secret-sampling/)
+* [Magick vignette](https://cran.r-project.org/web/packages/magick/vignettes/intro.html)
