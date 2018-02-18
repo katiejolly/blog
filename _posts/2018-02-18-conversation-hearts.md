@@ -104,7 +104,7 @@ final <- texts_to_annotate %>%
 friends$text <- final$heart_sayings # add the text to the friends data for when we send them
 ```
 
-While Pippa finished up the brainstorming, I started to work on the image processing part. From blog posts I'd read `magick` has always seemed like a cool package, but until now I hadn't done much that required it. We decided to superimpose the generated text onto a heart to create the final image to send. We'd include it in the email with a bit of text for context!
+While Pippa finished up the brainstorming, I started to work on the image processing part. From blog posts I'd read, (in particular Maelle's about [creating Galentine's Day cards](http://www.masalmon.eu/2018/01/26/galentinesday/)) `magick` has always seemed like a cool package, but until now I hadn't done much that required it. We decided to superimpose the generated text onto a heart to create the final image to send. We'd include it in the email with a bit of text for context!
 
 Warning, the part ahead is definitely the least elegant! I use the dreaded for loop because I learned Python first and admittedly haven't ever really taken the time to get comfortable for `map` or `lapply`. Some day I will...
 
