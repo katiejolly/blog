@@ -212,3 +212,4 @@ Now my house is in an R mood so we are working on using this general outline to 
 * [Galentine's Day cards by Maelle Salmon](http://www.masalmon.eu/2018/01/26/galentinesday/)
 * [Secret sampling by Sarah Lotspeich and Lucy D'Agostino McGowan](http://livefreeordichotomize.com/2017/11/15/secret-sampling/)
 * [Magick vignette](https://cran.r-project.org/web/packages/magick/vignettes/intro.html)
+* [Stochastic Shakespeare: Sonnets Produced by Markov Chains in R by Malcolm Barrett](https://malco.io/2018/01/28/shakespeare/)
