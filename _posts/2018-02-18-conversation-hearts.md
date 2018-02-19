@@ -205,7 +205,7 @@ It produced this card!
 
 We loved the cards we were able to make! And we got lots of replies from friends who similarly loved the cards :D
 
-Now my house is now in an R mood so we are working on using this general outline to do some projects with the student run food co-op on campus! Right now we are just in the idea phase, but I'm having a lot of fun seeing little projects turn into impactful tools for people and causes I care about. I'm hoping to be able to write about that partnership in the near future!
+Now my house is in an R mood so we are working on using this general outline to do some projects with the student run food co-op on campus! I love getting my groceries from them, and I'd love to be able to automate some of their emails to make their lives easier. Right now we are just in the idea phase, but I'm having a lot of fun seeing little projects turn into impactful tools for people and causes I care about. I'm hoping to be able to write about that partnership in the near future!
 
 *Resources I used*
 
