@@ -7,7 +7,12 @@ comments: true
 ---
 
 
-Last week I was trying to programmatically create plots and came across so many errors! Mostly I was not understanding why my variables were translating from inputs in my function to inputs for `ggplot2`. After I figured out my error it seemed simple, but I'm hoping my issues figuring it out can be useful to other people, so you don't have to spend as much time figuring it out!
+Last week I was trying to programmatically create plots and came across so many errors! Mostly I was not understanding why my variables weren't translating from inputs in my function to inputs for `ggplot2`. After I figured out my error it seemed simple, but I'm hoping my issues figuring it out can be useful to other people, so you don't have to spend as much time on it!
+
+tl;dr
+=====
+
+`aes_string` is super useful for including plots in user defined functions and can take your plots to a whole new level!
 
 Introducing my problem
 ======================
@@ -31,7 +36,7 @@ glimpse(poll_data)
     ## $ presidential_approval <int> 46, 33, 32, 33, 53, 44, 37, 39, 42, 33, ...
     ## $ poll_average          <int> -28, -10, -1, -15, 39, 14, 2, -22, -27, ...
 
-The corresponding article [Early senate polls have a lot to tell us about November](https://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/) essentially found that there is a strong correlation between polling numbers and the ultimate result of an election, and a slight smaller correlation between presidential approval and election results.
+The corresponding article [Early senate polls have a lot to tell us about November](https://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/). essentially found that there is a strong correlation between polling numbers and the ultimate result of an election, and a slight smaller correlation between presidential approval and election results.
 
 This post will focus more on the behind-the-scenes plotting than on the modeling, because there are plenty of awesome models already out there!
 
@@ -81,7 +86,7 @@ augment(poll_lm) %>%
     labs(x = "Poll average", y = "Election results")
 ```
 
-![plot of linear relationship]({{/assets/aes/aes1.png}})
+![original plot]({{ site.url }}/assets/aes/aes1.png)
 
 But I wanted a way to have a function that takes the model, response, and explanatory variables!
 
@@ -128,11 +133,27 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 plot_model(poll_lm, "poll_average", "election_result")
 ```
 
-![plot of linear relationship]({{/assets/aes/aes2.png}})
+![fixed plot]({{ site.url }}/assets/aes/aes2.png)
 
 Ta-da! Even though this is a simple example, it will be so helpful for me in the future! I'm sure there are other ways to solve this problem, so I'd love to know your favorite fix for programming with `ggplot2`.
 
-tl;dr
+
+Edit:
 =====
 
-`aes_string` is super useful for including plots in user defined functions and can take your plots to a whole new level!
+Per comments, I've edited the function to be more applicable to other models!
+
+``` r
+plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
+  augment(mod) %>%
+  ggplot() +
+    geom_point(aes_string(x = explanatory, y = response), color = "#2CA58D") +
+    geom_line(aes_string(x = explanatory, y = .fitted), color = "#033F63") +
+    theme_solarized() +
+    theme(axis.title = element_text()) +
+}
+
+plot_model(poll_lm, "poll_average", "election_result") + labs(x = "Poll average", y = "Election results")
+```
+
+Running this code would give the same plot, just without the hardcoded axis labels. 
