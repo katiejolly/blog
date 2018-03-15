@@ -173,7 +173,7 @@ Map the clusters
 
 Now we can put the clusters on the map! I'll highlight the high-high clusters in red and mark the other points in light gray.
 
-![map of the spatial clustering pattern]({{/assets/clusters/clusters.png}})
+![map of the spatial clustering pattern]({{/assets/clusters/clusters-2.png}})
 
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <thead>
