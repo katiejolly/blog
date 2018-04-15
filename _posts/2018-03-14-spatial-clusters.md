@@ -58,13 +58,13 @@ california_outline <- fifty_states %>%
   filter(id == "california")
 ```
 
-![plot of pbe rates]({{/assets/clusters/point-map.png}})
+![plot of pbe rates]({{ site.url }}/assets/clusters/point-map.png)
 
 So, most places have pretty low rates which isn't all that surprising. It's well documented that only a few schools have high rates. At first glance we can already see that it looks like there's at least some degree of positive autocorrelation (similar values are near one another). Now that I see this pattern I want to have a better way of quantifying it to justify my dismissal of OLS regression.
 
 Before that though, to take care of some of the problem of overlapping points that obscure the image I binned the observations in a hexbin map. Each hexagon is the mean of the PBE rates included in that area. The map with medians looked very similar.
 
-![plot of pbe rates hexbins]({{/assets/clusters/hexbins.png}})
+![plot of pbe rates hexbins]({{ site.url }}/assets/clusters/hexbins.png)
 
 The pattern here looks very similar to the point map (as it should). I mostly made it because I thought it would be cool!
 
@@ -109,7 +109,7 @@ So we are seeing an statistically significant index value of 0.26572. Possible v
 
 I'm a very visual learner and I love having statistics drawn out. I find a density plot helpful for visualizing the results of Monte Carlo Moran's I. It's also easy to plot with base R plotting (but why not use `ggplot2` if I can).
 
-![distribution of statistics]({{/assets/clusters/distribution.png}})
+![distribution of statistics]({{ site.url }}/assets/clusters/distribution.png)
 
 This all being said, the Moran's I index can vary widely based on your conceptualization and definition of spatial relationships. To that end I calculated the Moran's I statistic for 1 to 20 neighbors to show how the value changes. In this case it decreases but that isn't always the case.
 
@@ -131,7 +131,7 @@ for (k in 1:20) {
 }
 ```
 
-![spatial clustering with different numbers of neighbors]({{/assets/clusters/neighbors.png}})
+![spatial clustering with different numbers of neighbors]({{ site.url }}/assets/clusters/neighbors.png)
 
 In this case we see the highest spatial autocorrelation with 3 neighbors and the lowest with 20. It's a good sign that they are all positive, though (and not too close to zero). As k increases, spatial autocorrelation should eventually flatten out because we will lose the nuance in the patterns.
 
@@ -173,7 +173,8 @@ Map the clusters
 
 Now we can put the clusters on the map! I'll highlight the high-high clusters in red and mark the other points in light gray.
 
-![map of the spatial clustering pattern]({{/assets/clusters/clusters.png}})
+![map of the spatial clustering pattern]({{ site.url }}/assets/clusters/clusters-2.png)
+
 
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <thead>
