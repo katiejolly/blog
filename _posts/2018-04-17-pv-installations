@@ -7,7 +7,7 @@ comments: true
 <!-- categories: R markovchain poems -->
 ---
 
-My friend Nadia has been working on her (amazing!) honors thesis in economics about solar energy in homes and peer effects. She wanted to make some maps of the number of homes with solar panels and an easier way to automate them. She essentially needed the same map for about 15 different years. In the end we also made a GIF showing all of the years sequentially!
+My friend Nadia has been working on her (amazing!) honors thesis in economics about solar energy in homes and peer effects. She wanted to make some maps of the number of homes with solar panels and an easier way to automate them. She essentially needed the same map for about 15 different years. In the end we also made a GIF showing all of the years sequentially! The data for this post were mostly collected from Open PV.
 
 We decided to make them using R and we both learned lots of `sf`, `magick` and `ggplot2` tricks in the process!
 
