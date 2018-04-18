@@ -2,7 +2,7 @@
 layout: post
 title: "Making a GIF of Solar Panel Installations in Minnesota and Wisconsin"
 date: 2018-04-17
-author: "Katie Jolly and Nadia Mezic"
+author: "Katie Jolly (![@katiejolly6](https://twitter.com/katiejolly6)) and Nadia Mezic"
 comments: true
 <!-- categories: R markovchain poems -->
 ---
