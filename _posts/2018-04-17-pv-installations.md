@@ -34,10 +34,12 @@ library(magick)
 df_full <- tibble(year = as.numeric(),
                   zip = as.numeric(),
                   install = as.numeric(),
-                  baselevel = as.numeric()) # initialize an empty dataframe so that we can loop through it later
+                  baselevel = as.numeric()) # initialize an empty 
+                  dataframe so that we can loop through it later
 
 for (i in 1:14){
-  df <- read_excel("nmezicrealmap.xlsx", sheet = i) # each year is stored as a separate sheet in the workbook, we want to add them all together
+  df <- read_excel("nmezicrealmap.xlsx", sheet = i) # each year is stored as a 
+  separate sheet in the workbook, we want to add them all together
   df_full <- bind_rows(df_full, df)
 }
 
@@ -63,7 +65,8 @@ zips <- zctas(cb = TRUE, year = 2010) %>% # get all zip code polygons
 Not knowing much about how zipcodes are coded, we had a difficult time filtering out just zipcodes for Minnesota and Wisconsin (our two states of interest). We decided to scrape a table of all the zipcodes for MN and WI and filter using the `%in%` operator.
 
 ``` r
-wi_zips <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSDf0obuIv1yF22kmN2OZ-w6POucJmB2QDNkUANph_YsvUCCuxzbyw2DZ1baf75R5-neMrlUS77cSVc/pub?output=csv") %>% # all the zipcodes in WI
+wi_zips <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSDf0obuIv1yF22km
+N2OZ-w6POucJmB2QDNkUANph_YsvUCCuxzbyw2DZ1baf75R5-neMrlUS77cSVc/pub?output=csv") %>% # all the zipcodes in WI
   clean_names()
 
 zips_wi_sf <- zips %>%
@@ -96,7 +99,7 @@ ggplot(mn_zips_sf) +
 
 Beautiful! We next combined the two sf dataframes to make one that includes **both** MN and WI zipcodes.
 
-As a sidenote, we had to troubleshoot the error we got when we tried to use `dplyr::bind_rows()`. We found this [issue](https://github.com/tidyverse/dplyr/issues/2457) and this [reference page](https://r-spatial.github.io/sf/reference/bind.html) and figured out by reading both of those than `rbind` was a better bet for non data frame objects (i.e. simple features objects).
+As a sidenote, we had to troubleshoot the error we got when we tried to use `dplyr::bind_rows()`. We found this [issue](https://github.com/tidyverse/dplyr/issues/2457) and this [reference page](https://r-spatial.github.io/sf/reference/bind.html) and figured out by reading both of those that `rbind` was a better bet for non data frame objects (i.e. simple features objects).
 
 ``` r
 zips_wi_mn <- rbind(mn_zips_sf, zips_wi_sf)
@@ -150,7 +153,10 @@ The general process:
 -   Save it to the current working directory as "`year`.pdf"
 
 ``` r
-pal <- c("Fewer than 4" = "#99d8c9", "4 to 8" = "#66c2a4", "9 to 15" = "#41ae76", "16 to 22" = "#238b45", "23 to 30" = "#006d2c", "More than 30" = "#00441b") # create a named vector for the map legend and coloring. The names will be the text in the legend.
+pal <- c("Fewer than 4" = "#99d8c9", "4 to 8" = "#66c2a4", 
+"9 to 15" = "#41ae76", "16 to 22" = "#238b45", "23 to 30" = 
+"#006d2c", "More than 30" = "#00441b") # create a named vector for the 
+map legend and coloring. The names will be the text in the legend.
 
 plot_data_map = function (yr) { # code from above in function form
   full_data_sf %>%
