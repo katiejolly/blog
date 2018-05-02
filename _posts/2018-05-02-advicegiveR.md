@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "R Milestone: My first package"
+title: "advicegiveR: Developing my first package!"
 date: 2018-05-02
 author: "Katie Jolly"
 comments: true
