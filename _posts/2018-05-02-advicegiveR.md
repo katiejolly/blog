@@ -33,12 +33,12 @@ I have three functions in my package.
 
 -   This can either grab a random piece of advice or a specific one (by giving an integer as the id parameter. Defaults to random)
 
-1.  `load_image(image)`
+2.  `load_image(image)`
 
 -   From a pre-loaded list of images, pick one as the background for your "poster"!
 -   You can also load your own image to use with `magick::image_read()`. The only requirement is that you actually do use `magick` to load the image, the function will give you an error otherwise.
 
-1.  `print_advice(image, advice)`
+3.  `print_advice(image, advice)`
 
 -   This is the function that brings it all together! Give it a background image and the advice you want printed and it will design the poster for you! It returns an image that you can save.
 

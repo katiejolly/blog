@@ -7,7 +7,7 @@ comments: true
 <!-- categories: R markovchain poems -->
 ---
 
-My friend Nadia has been working on her (amazing!) honors thesis in economics about solar energy in homes and peer effects. She wanted to make some maps of the number of homes with solar panels and an easier way to automate them. She essentially needed the same map for about 15 different years. In the end we also made a GIF showing all of the years sequentially!
+My friend Nadia has been working on her (amazing!) honors thesis in economics about solar energy in homes and peer effects. She wanted to make some maps of the number of homes with solar panels and an easier way to automate them. She essentially needed the same map for about 15 different years. In the end we also made a GIF showing all of the years sequentially! The data for this post were mostly collected from Open PV.
 
 We decided to make them using R and we both learned lots of `sf`, `magick` and `ggplot2` tricks in the process!
 
@@ -96,7 +96,7 @@ ggplot(mn_zips_sf) +
 
 Beautiful! We next combined the two sf dataframes to make one that includes **both** MN and WI zipcodes.
 
-As a sidenote, we had to troubleshoot the error we got when we tried to use `dplyr::bind_rows()`. We found this [issue](https://github.com/tidyverse/dplyr/issues/2457) and this [reference page](https://r-spatial.github.io/sf/reference/bind.html) and figured out by reading both of those than `rbind` was a better bet for non data frame objects (i.e. simple features objects).
+As a sidenote, we had to troubleshoot the error we got when we tried to use `dplyr::bind_rows()`. We found this [issue](https://github.com/tidyverse/dplyr/issues/2457) and this [reference page](https://r-spatial.github.io/sf/reference/bind.html) and figured out by reading both of those that `rbind` was a better bet for non data frame objects (i.e. simple features objects).
 
 ``` r
 zips_wi_mn <- rbind(mn_zips_sf, zips_wi_sf)
