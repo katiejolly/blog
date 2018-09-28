@@ -23,13 +23,15 @@ This project aims to make it easier for community members to learn more about th
 In June we started with a list of the 88 counties in Ohio. For each county we looked online for a publicly available shapefile. Most counties did not have one, though. For counties that were missing some piece of information (shapefile, date of adoption, etc.) we called the Board of Elections or GIS office. Still many counties did not have a shapefile, but they were often able to provide a PDF or paper map through the mail. In total, we were given shapefiles from 50 counties, PDF or paper maps from 31 counties, and no maps from 7 counties.
 
 In this post I'll discuss how we approximated precinct boundaries for those counties that didn't have any maps. There are a variety of ways to do this and we chose the one we could do in the amount of time we had given our resources. 
+
+![Image of the shapefiles and PDF maps we received](../ohio/figs/ohio-art.png)
   
 
 ## What to do when there's no map?
 
 "[Geocoding](http://pro.arcgis.com/en/pro-app/help/data/geocoding/what-is-geocoding-.htm) is the process of transforming a description of a location—such as a pair of coordinates, an address, or a name of a place—to a location on the earth's surface." Commonly geocoding an address returns latitude/longitude coordinates so that you can use that address for spatial analysis. Many projects that try to build precinct boundaries from voter addresses use this kind of geocoding. Ultimately, we wanted to try something different. 
 
-Instead of returning latitude/longitude coordinates, we used a Census API through the [tigris](https://github.com/walkerke/tigris) package that returns the GEOid of the census block of the address. This provides slightly less precise information but it tends to have higher accuracy, as measured by the number of addresses that return an NA for either method. 
+Instead of returning latitude/longitude coordinates, we used a Census API through the [tigris](https://github.com/walkerke/tigris) package that returns the GEOid of the census block of the address. This provides slightly less precise information but it tends to have higher accuracy, as measured by the number of addresses that return an NA for either method given that we started with the same set of addresses. A geocoding service like Google Maps also works, but it's strictly rate-limited at 2,500 requests per day. Even the smallest counties in Ohio have far more than 2,500 registered voters. 
 
 Geocoding is important for this project because it is essentially how we will translate the voter registration addresses to a general precinct outline. We then use an algorithm to draw more concrete lines around voters. 
 
@@ -49,6 +51,7 @@ We can get the voterfile for any county in Ohio from the [Secretary of State web
 library(tidyverse)
 library(tigris)
 library(sf)
+library(magick)
 
 noble <- read_csv("https://www6.sos.state.oh.us/ords/f?p=VOTERFTP:DOWNLOAD::FILE:NO:2:P2_PRODUCT_NUMBER:61") # download the voterfile for Noble County
 
@@ -260,6 +263,16 @@ noble_nn7 <- noble_nn6 %>%
   lookup_precincts_nn() %>%
   classify_nn()
 
+```
+
+```{r echo = FALSE}
+pics <- list.files(path = "../ohio/figs/gif", pattern = "*.png", full.names = T) %>% 
+  map(image_read) %>% # reads each path file
+  image_join() %>% # joins image
+  image_animate(fps=1) %>% # animates, can opt for number of loops
+  image_write("../ohio/figs/iterations2.gif") # write to current dir
+
+pics
 ```
 
 After seven iterations we have 0 unclassified blocks. 

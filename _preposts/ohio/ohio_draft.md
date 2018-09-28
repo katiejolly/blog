@@ -11,18 +11,26 @@ In June we started with a list of the 88 counties in Ohio. For each county we lo
 
 In this post I'll discuss how we approximated precinct boundaries for those counties that didn't have any maps. There are a variety of ways to do this and we chose the one we could do in the amount of time we had given our resources.
 
+![Image of the shapefiles and PDF maps we received](../ohio/figs/ohio-art.png)
+
 What to do when there's no map?
 -------------------------------
 
--   Introduce geocoding, different types
+"[Geocoding](http://pro.arcgis.com/en/pro-app/help/data/geocoding/what-is-geocoding-.htm) is the process of transforming a description of a location—such as a pair of coordinates, an address, or a name of a place—to a location on the earth's surface." Commonly geocoding an address returns latitude/longitude coordinates so that you can use that address for spatial analysis. Many projects that try to build precinct boundaries from voter addresses use this kind of geocoding. Ultimately, we wanted to try something different.
+
+Instead of returning latitude/longitude coordinates, we used a Census API through the [tigris](https://github.com/walkerke/tigris) package that returns the GEOid of the census block of the address. This provides slightly less precise information but it tends to have higher accuracy, as measured by the number of addresses that return an NA for either method given that we started with the same set of addresses. A geocoding service like Google Maps also works, but it's strictly rate-limited at 2,500 requests per day. Even the smallest counties in Ohio have far more than 2,500 registered voters.
+
+Geocoding is important for this project because it is essentially how we will translate the voter registration addresses to a general precinct outline. We then use an algorithm to draw more concrete lines around voters.
 
 ### The algorithm
 
--   Introduce the basic concept of the process, broad overview of what it's doing
+In broad strokes, our algorithm takes the geocoded addresses (with the information about what precinct the voter is assigned to) and assigns precinct boundaries by census block. So it finds the blocks that already have valid addresses, usually 40-60% of the blocks, and assigns it to the most common precinct designation of the voters. Then for the unclassified blocks, we classify them based on their rook-contiguity neighbors. I'll illustrate this process using Noble County as an example below.
+
+*INSERT NOBLE COUNTY IMAGE*
 
 #### Step 1: Getting the block IDs
 
--   URL to voterfile site
+We can get the voterfile for any county in Ohio from the [Secretary of State website](https://www6.sos.state.oh.us/ords/f?p=111:1).
 
 -   A bit about voterfiles
 
