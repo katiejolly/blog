@@ -63,7 +63,7 @@ noble <- read_csv("https://www6.sos.state.oh.us/ords/f?p=VOTERFTP:DOWNLOAD::FILE
 | OH0012086321 | R                  | 48386 SENECA LAKE RD  | SARAHSVILLE       | OH                 | ACTIVE        |
 
 
-
+\n
 We can then geocode the addresses in the voterfile. This code gets the census block GEOid for each address. This will allow us to classify census blocks to precinct when they have a registered voter there.
 
 ``` r
