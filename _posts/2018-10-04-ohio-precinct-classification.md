@@ -62,6 +62,8 @@ noble <- read_csv("https://www6.sos.state.oh.us/ords/f?p=VOTERFTP:DOWNLOAD::FILE
 | OH0022580793 | D                  | 14194 CROOKED TREE RD | LOWELL            | OH                 | ACTIVE        |
 | OH0012086321 | R                  | 48386 SENECA LAKE RD  | SARAHSVILLE       | OH                 | ACTIVE        |
 
+
+
 We can then geocode the addresses in the voterfile. This code gets the census block GEOid for each address. This will allow us to classify census blocks to precinct when they have a registered voter there.
 
 ``` r
@@ -269,7 +271,7 @@ After several iterations we have 0 unclassified blocks.
 
 I've created an animation below that details visually how the algorithm works. You can follow along with the bars to see how many unclassified blocks remain after each run.
 
-![GIF of interations to built precinct shapefile in Noble County]({{ site.url }}/assets/ohio/iteration.gif)
+![GIF of interations to built precinct shapefile in Noble County]({{ site.url }}/assets/ohio/iterations.gif)
 
 At this point we've created our precinct shapefile! We can dissolve on the `PRECINCT_NAME` field to get single polygons for each one, instead of having them as blocks.
 
