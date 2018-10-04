@@ -2,7 +2,7 @@
 layout: post
 title: "Writing a classification algorithm to build precinct shapefiles in Ohio"
 date: 2018-10-04
-author: "Katie Jolly and Katya Kelly"
+author: "Katie Jolly"
 comments: true
 <!-- categories: R markovchain poems -->
 ---
