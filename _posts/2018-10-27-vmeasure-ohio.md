@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Evaluating our precinct boundary approximation algorithm with v-measure"
-date: 2018-10-04
+date: 2018-10-27
 author: "Katie Jolly and Katya Kelly"
 comments: true
 <!-- categories: R markovchain poems -->
