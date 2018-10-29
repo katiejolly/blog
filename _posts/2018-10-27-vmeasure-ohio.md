@@ -18,7 +18,7 @@ We happened to find Jakub Nowosad's post about the [SABRE](https://nowosad.githu
 
 The metric measures the "sameness" of the different cluster labels, or how well two different partitions (precinct boundaries) fit together in one region (a county). For simplicity, we refer to the official precinct boundaries as a regionalization and the approximate boundaries as a partition. We compute values for completeness, the average "sameness" of the regions with respect to partitions, and homogeneity, the average "sameness" of partitions with respect to zones. The v-measure is a harmonic mean of completeness and homogeneity and ranges between 0 and 1, with 1 being a perfect match:
 
-$$V\_{\\beta} = \\frac{(1+\\beta)hc}{(\\beta h)+c}$$
+$V\_{\\beta} = \\frac{(1+\\beta)hc}{(\\beta h)+c}$
 
 In this equation, *c* refers to completeness, *h* to homogeneity, and *β* to a weighting constant. When *β* &gt; 1, completeness is more influential than homogeneity, and vice versa when *β* &lt; 1. For a more detailed description of how this calculation works, read the [paper](https://eartharxiv.org/rcjh7/) by Nowosad and Stepinksi.
 
