@@ -62,7 +62,7 @@ vm_clark
     ##  Homogeneity: 0.96
     ##  Completeness: 0.95
     ##
-    ##  The spatial objects could be retrived with:
+    ##  The spatial objects could be retrieved with:
     ##  $map1 - the first map
     ##  $map2 - the second map
 
