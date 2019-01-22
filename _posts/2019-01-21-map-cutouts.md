@@ -19,11 +19,6 @@ being focused on doing any analysis since the result was purely visual.
 
 ![preview of the final map]({{ site.url }}/assets/tacoma/finished_1.jpeg)
 
-When I gave her the map we ended up working through some different map
-designs together so it became a fun project for us to do\! I’ll walk
-through the intitial map and then some of the additional maps we made
-with a similar style.
-
 ## Loading the data
 
 I used `tigris` to get the roads and [ArcGIS Open Data
