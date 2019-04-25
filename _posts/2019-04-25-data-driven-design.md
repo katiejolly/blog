@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Designing Map Cutouts with {sf} and {ggplot2}"
+title: "Data-driven design in *Curious City: In, Out, Above, Beyond Saint Paul*"
 date: 2019-01-21
 author: "Katie Jolly"
 comments: true
@@ -13,8 +13,8 @@ I’ve recently become more interested in the artistic side of data
 visualization and cartography. Data-driven design is also sometimes
 called information design. In this post I’ll talk about how I used both
 R and design software to create a spread called “Turning the Page” for
-the book [Curious City: In, Out, Above, Beyond Saint
-Paul](https://issuu.com/maccarto/docs/curiouscity).
+the book [*Curious City: In, Out, Above, Beyond Saint
+Paul*](https://issuu.com/maccarto/docs/curiouscity).
 
 <br> <br>
 
@@ -26,12 +26,12 @@ This past semester I signed up for a class in Macalester’s geography
 department called “Cultural Atlas Production.” I wasn’t really sure what
 a cultural atlas was at the time, though. In the first few meetings of
 the class we focused on studying the existing exemplar atlases. Some of
-these were Infinite City, Unfathomable City, and Nonstop Metropolis all
-by [Rebecca Solnit](http://rebeccasolnit.net/atlases/) and Portlandness
+these were *Infinite City*, *Unfathomable City*, and *Nonstop Metropolis* all
+by [Rebecca Solnit](http://rebeccasolnit.net/atlases/) and *Portlandness*
 by [David Banis and Hunter
 Shobe](http://www.sasquatchbooks.com/book/?isbn=9781632170002&portlandness-by-david-banis).
-I was drawn to the Cheshire and Oliver’s atlas [London: The Information
-Capital](http://theinformationcapital.com) because of how data-driven
+I was drawn to the Cheshire and Oliver’s atlas [*London: The Information
+Capital*](http://theinformationcapital.com) because of how data-driven
 their spreads were. In particular, one spread that I found myself coming
 back to over and over was “All the Tate’s Treasures.”
 
