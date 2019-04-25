@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data-driven design in *Curious City: In, Out, Above, Beyond Saint Paul*"
+title: "Data-driven design in 'Curious City: In, Out, Above, Beyond Saint Paul'"
 date: 2019-01-21
 author: "Katie Jolly"
 comments: true
