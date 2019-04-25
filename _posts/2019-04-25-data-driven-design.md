@@ -1,10 +1,12 @@
 ---
 layout: post
 title: "Data-driven design in 'Curious City: In, Out, Above, Beyond Saint Paul'"
-date: 2019-01-21
+date: 2019-04-25
 author: "Katie Jolly"
 comments: true
 <!-- categories: R markovchain poems -->
+redirect_from:
+  - 2019-01-21/data-driven-design
 ---
 
 # Data-driven design & inspiration
