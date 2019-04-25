@@ -258,7 +258,7 @@ make_title_svg_left <- function(data, file){
 This process created a plot like the one below for each branch (fourteen
 total):
 
-<br> <br> ![final design]({{ site.url }}/assets/curious-city/popular_tiles_arlington_bar.png) <br> <br>
+<br> <br> ![final design]({{ site.url }}/assets/curious-city/popular_titles_arlington_bar.png) <br> <br>
 
 ``` r
 # make a plot for each library
