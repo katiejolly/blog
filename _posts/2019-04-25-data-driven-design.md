@@ -97,7 +97,7 @@ to mind more. So I started thinking more broadly about “collections” and
 immediately thought of libraries. I thought about how many directions I
 could go with a spread about public libraries and knew pretty quickly
 that that was the direction I was going to take. Some of my other ideas
-were street orinetations in different neighborhoods (and how things like
+were street orientations in different neighborhoods (and how things like
 highways would affect these patterns) and generating color schemes from
 different iconic views across the city. Neither of those made me as
 excited, though.
