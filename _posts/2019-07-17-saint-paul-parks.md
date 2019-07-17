@@ -89,9 +89,7 @@ usually did not fit in the column headers or it was abbreviated.
 
 The data is formatted such that each column is a question and each row
 is one respondent. It looks like there is a maximum of one respondent
-per family. The survey is of people who live in Saint Paul, but it
-includes questions about park facilities beyond the city boundaries. For
-example the regional parks are often not within the city. If you want
+per family. The survey is of people who live in Saint Paul about the park facilities in Saint Paul. If you want
 some inspiration of where to start with your analysis, the parks
 department has a
 [report](https://www.stpaul.gov/sites/default/files/Media%20Root/Parks%20%26%20Recreation/Saint%20Paul%20Parks%20and%20Rec%20Community%20Interest%20Survey.pdf)
