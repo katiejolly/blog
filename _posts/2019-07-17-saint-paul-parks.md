@@ -23,7 +23,7 @@ particularly like it because some of the text response columns provide
 an excellent example of messy data.
 
 On the Open Information portal you can create basic visualizations. For
-example, here is one showing the respondent’s opinions about the
+example, here is one showing the respondents' opinions about the
 importance of park facility
 repair.
 
