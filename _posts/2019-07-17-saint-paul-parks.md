@@ -272,7 +272,7 @@ ggplot(x2, aes(x = keyword, y = prop, fill = response)) +
 
 It seems like Saint Paul park users really like the outdoor swimming
 pools (an interesting first place in Minnesota), trails for walkers and
-bikers, picnicing, playgrounds, community centers, and parking lots.
+bikers, picnics, playgrounds, community centers, and parking lots.
 They don’t love the boating facilities, restrooms, fishing areas, and
 sport-specific facilities. As a semi-regular park user, this pretty
 closely matches my opinions of the park facilities.
@@ -467,6 +467,6 @@ in Saint Paul learned to swim at a rec center and the camps seem
 popular. As an adult with no children I mostly attend the adult fitness
 and wellness programs, but I’m certainly not a representative user.
 
-I hope this post was information about public parks, Saint Paul Open
+I hope this post was informative about public parks, Saint Paul Open
 Information, and/or data wrangling and visualization. If you look at any
 other questions in the survey I’m curious to know what you find\! Go out and enjoy your local parks!
