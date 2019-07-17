@@ -17,12 +17,7 @@ spaces. The map design was done only with a few lines of code\! It was a
 great chance for me to practice some design techniques in R without
 being focused on doing any analysis since the result was purely visual.
 
-![a preview of the final map](../tacoma/finished_1.jpeg)
-
-When I gave her the map we ended up working through some different map
-designs together so it became a fun project for us to do\! I’ll walk
-through the intitial map and then some of the additional maps we made
-with a similar style.
+![preview of the final map]({{ site.url }}/assets/tacoma/finished_1.jpeg)
 
 ## Loading the data
 
@@ -181,4 +176,4 @@ To create the final product I watercolored in the map part of the
 design. That step was pretty optional in my opinion. I’d also be curious
 to know if there’s a way to get a watercolor effect in R\!
 
-![the finished product!]({{ site.url }}/assets/tacoma/finished_2.png)
+![the finished product!]({{ site.url }}/assets/tacoma/finished_2.jpeg)

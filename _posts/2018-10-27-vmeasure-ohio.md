@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Evaluating our precinct boundary approximation algorithm with v-measure"
-date: 2018-10-04
+date: 2018-10-27
 author: "Katie Jolly and Katya Kelly"
 comments: true
 <!-- categories: R markovchain poems -->
@@ -18,7 +18,7 @@ We happened to find Jakub Nowosad's post about the [SABRE](https://nowosad.githu
 
 The metric measures the "sameness" of the different cluster labels, or how well two different partitions (precinct boundaries) fit together in one region (a county). For simplicity, we refer to the official precinct boundaries as a regionalization and the approximate boundaries as a partition. We compute values for completeness, the average "sameness" of the regions with respect to partitions, and homogeneity, the average "sameness" of partitions with respect to zones. The v-measure is a harmonic mean of completeness and homogeneity and ranges between 0 and 1, with 1 being a perfect match:
 
-$$V\_{\\beta} = \\frac{(1+\\beta)hc}{(\\beta h)+c}$$
+$V\_{\\beta} = \\frac{(1+\\beta)hc}{(\\beta h)+c}$
 
 In this equation, *c* refers to completeness, *h* to homogeneity, and *β* to a weighting constant. When *β* &gt; 1, completeness is more influential than homogeneity, and vice versa when *β* &lt; 1. For a more detailed description of how this calculation works, read the [paper](https://eartharxiv.org/rcjh7/) by Nowosad and Stepinksi.
 
@@ -62,7 +62,7 @@ vm_clark
     ##  Homogeneity: 0.96
     ##  Completeness: 0.95
     ##
-    ##  The spatial objects could be retrived with:
+    ##  The spatial objects could be retrieved with:
     ##  $map1 - the first map
     ##  $map2 - the second map
 
@@ -102,6 +102,6 @@ We can map the regional inhomogeneity as well to get a better idea of where the 
 
 ![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/ohio/map1_rih.png)
 
-In this map we can see in yellow that the urban (smaller) precincts are not approximated as well as the larger (urban) ones. We could also produce a very similar map from the perspective of the approximated precincts. We think there are a few reasons (that we've come up with so far) that we are seeing this particular spatial pattern of the error. First, it's easier to approximate the precincts in the rural areas with simpler shapes. The urban precincts have much more complex shapes and the nuance can be hard to capture. Additionally, rural precincts seem to be more divided along township lines while urban precincts are more divided along major roads because there are often multiple within a township. We've found roads to be difficult to include in the algorithm, but we are looking for ways to improve that now. Overall the errors seem highly clustered (i.e. not randomly distributed) which seems to suggest systemic issues that we could (and should) address in the future.
+In this map we can see in yellow that the urban (smaller) precincts are not approximated as well as the rural (larger) ones. We could also produce a very similar map from the perspective of the approximated precincts. We think there are a few reasons (that we've come up with so far) that we are seeing this particular spatial pattern of the error. First, it's easier to approximate the precincts in the rural areas with simpler shapes. The urban precincts have much more complex shapes and the nuance can be hard to capture. Additionally, rural precincts seem to be more divided along township lines while urban precincts are more divided along major roads because there are often multiple within a township. We've found roads to be difficult to include in the algorithm, but we are looking for ways to improve that now. Overall the errors seem highly clustered (i.e. not randomly distributed) which seems to suggest systemic issues that we could (and should) address in the future.
 
 That's a quick overview of how we've been evaluating our algorithm for precinct approximations. We like the amount of information we can get from v-measure, but are continuously looking for other resources as well. The project in general is a work in progress-- feel free to comment if you have ideas or questions! Thanks for reading!
