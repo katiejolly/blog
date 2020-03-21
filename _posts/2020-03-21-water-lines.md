@@ -1,5 +1,11 @@
-Reproducible Cartography Tips in R: Water Lines
-================
+---
+layout: post
+title: "Reproducible Cartography Tips in R: Water Lines"
+date: 2020-03-21
+author: "Katie Jolly"
+comments: true
+<!-- categories: R markovchain poems -->\
+---
 
 Following up on my previous post on [inner
 glows](https://www.katiejolly.io/blog/2020-03-06/inner-glow), I am going
