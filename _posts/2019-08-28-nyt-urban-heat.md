@@ -24,7 +24,7 @@ it\!
 
 <br><br>
 
-![baltimore heat map]({{ site.url }}/assets/heat-islands/baltimore.PNG)
+![baltimore heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/baltimore.PNG)
 
 <br><br>
 
@@ -32,7 +32,7 @@ it\!
 
 <br><br>
 
-![dc heat map]({{ site.url }}/assets/heat-islands/dc.PNG)
+![dc heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/dc.PNG)
 
 <br><br>
 
@@ -40,7 +40,7 @@ it\!
 
 <br><br>
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/albuquerque.PNG)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/albuquerque.PNG)
 
 <br><br>
 
@@ -135,7 +135,7 @@ ggplot() +
 
 <br><br>
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/map1.png)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/map1.png)
 
 <br><br>
 
@@ -155,7 +155,7 @@ hues slightly. I decided to go with the *teal rose* color scheme.
 
 <br><br>
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/tealrose.PNG)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/tealrose.PNG)
 
 <br><br>
 
@@ -173,7 +173,7 @@ ggplot() +
 
 <br><br>
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/map2.png)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/map2.png)
 
 <br><br>
 
@@ -209,7 +209,7 @@ ggplot() +
   scale_fill_gradientn(colors = rcartocolor::carto_pal(name = "TealRose", n = 7), breaks = c(72.5, 88, 106.6), labels = c("72", "88", "106"), name = "")
 ```
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/intermediate1.png)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/intermediate1.png)
 
 
 Now the only things left to do are cleaning up the plot a bit and
@@ -234,7 +234,7 @@ ggplot() +
   labs(caption = "July 8, 2018\nSource: DC Open Data")
 ```
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/full_map.png)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/full_map.png)
 
 
 And now we have our map\!
@@ -271,7 +271,7 @@ ggplot() +
   labs(caption = "July 8, 2018\nSource: DC Open Data")
 ```
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/hot_map.png)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/hot_map.png)
 
 
 And all of the areas that were less than 80 F.
@@ -304,7 +304,7 @@ ggplot() +
   labs(caption = "July 8, 2018\nSource: DC Open Data")
 ```
 
-![Albuquerque heat map]({{ site.url }}/assets/heat-islands/cold_map.png)
+![Albuquerque heat map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/heat-islands/cold_map.png)
 
 
 I said I’d get back to why I use **sp** data structures for the water

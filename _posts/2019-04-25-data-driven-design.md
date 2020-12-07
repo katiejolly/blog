@@ -18,7 +18,7 @@ Paul*](https://issuu.com/maccarto/docs/curiouscity).
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/kjolly_final.png)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/kjolly_final.png)
 
 <br> <br>
 
@@ -37,7 +37,7 @@ back to over and over was “All the Tate’s Treasures.”
 
 <br> <br>
 
-![all the tate's treasures]({{ site.url }}/assets/curious-city/all-the-tates-treasures.png)
+![all the tate's treasures](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/all-the-tates-treasures.png)
 
 <br> <br>
 
@@ -61,20 +61,20 @@ the other data-driven ones.
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/treasures_before_after.jpg)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/treasures_before_after.jpg)
 
 Image: All the Tate’s Treasures
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/commute_flows_before_after.jpg)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/commute_flows_before_after.jpg)
 
 Image: From Home to Work
 
 <br> <br>
 
 ![](relationship_status_before_after.jpg)
-![final design]({{ site.url }}/assets/curious-city/relationship_status_before_after.jpg)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/relationship_status_before_after.jpg)
 
 Image: Relationship Status
 
@@ -258,7 +258,7 @@ make_title_svg_left <- function(data, file){
 This process created a plot like the one below for each branch (fourteen
 total):
 
-<br> <br> ![final design]({{ site.url }}/assets/curious-city/popular_titles_arlington_bar.png) <br> <br>
+<br> <br> ![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/popular_titles_arlington_bar.png) <br> <br>
 
 ``` r
 # make a plot for each library
@@ -297,7 +297,7 @@ I then repeated this process for each branch.
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/graphic2.png)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/graphic2.png)
 
 <br> <br>
 
@@ -307,7 +307,7 @@ shelves, trying to keep it relatively balanced.
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/graphic5.png)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/graphic5.png)
 
 <br> <br>
 
@@ -316,7 +316,7 @@ side and bolded the titles.
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/graphic6.png)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/graphic6.png)
 
 <br> <br>
 
@@ -331,7 +331,7 @@ small groups.
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/critique.JPG)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/critique.JPG)
 
 <br> <br>
 
@@ -341,7 +341,7 @@ I hope it’s clear how they all fit together.
 
 <br> <br>
 
-![final design]({{ site.url }}/assets/curious-city/library-before-after.png)
+![final design](https://raw.githubusercontent.com/katiejolly/blog/master/assets/curious-city/library-before-after.png)
 
 # Resources
 

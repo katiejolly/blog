@@ -77,7 +77,7 @@ ggplot(zips_wi_sf) +
   geom_sf() # plot to make sure it looks like Wisconsin
 ```
 
-![]({{ site.url }}/assets/PV_installations/WI.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/PV_installations/WI.png)
 
 Sure enough, it does! We then repeated that process for Minnesota.
 
@@ -92,7 +92,7 @@ ggplot(mn_zips_sf) +
   geom_sf() # make sure it looks like MN
 ```
 
-![]({{ site.url }}/assets/PV_installations/MN.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/PV_installations/MN.png)
 
 Beautiful! We next combined the two sf dataframes to make one that includes **both** MN and WI zipcodes.
 
@@ -183,7 +183,7 @@ plots <- lapply(2003:2016, plot_data_map) # loop over each year
 
 Here's an example of the map from 2016. It shows the number of existing installations as of 1 January 2016.
 
-![the map of 2016]({{ site.url }}/assets/PV_installations/2016.png)
+![the map of 2016](https://raw.githubusercontent.com/katiejolly/blog/master/assets/PV_installations/2016.png)
 
 Animation!
 ----------
@@ -200,4 +200,4 @@ list.files(path = ".", pattern = "*.png", full.names = T) %>%
   image_write("pv_installation.gif") # write to current dir
 ```
 
-![GIF with all of the years pasted together]({{ site.url }}/assets/PV_installations/pv_installation.gif)
+![GIF with all of the years pasted together](https://raw.githubusercontent.com/katiejolly/blog/master/assets/PV_installations/pv_installation.gif)

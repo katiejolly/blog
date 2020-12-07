@@ -37,7 +37,7 @@ data_311 <- read_csv("311.csv")
 From this data, I only want to look at requests that either say `Heat - Excessive  Insufficient` or `Heat/Fuel Assistance`.
 
 ``` r
-heat_311 <- data_311 %>% 
+heat_311 <- data_311 %>%
   filter(TYPE == "Heat - Excessive  Insufficient" | TYPE == "Heat/Fuel Assistance")
 ```
 
@@ -90,7 +90,7 @@ I love the `tidycensus` package for ACS data! I'm pretty familiar with the [Amer
 bos_inc <- get_acs(geography = "tract", # get tract level data
               variables = c(medincome = "B19013_001"), # about median income
               state = "MA", # from Massachusetts
-              county = "Suffolk") # in Suffolk County, where Boston is 
+              county = "Suffolk") # in Suffolk County, where Boston is
 
 # by default, the endyear in get_acs() is 2016, so we don't need to specify that
 ```
@@ -100,7 +100,7 @@ Next, we need to attach this income data to a spatial dataframe. We'll get this 
 ``` r
 bos_tracts <- tigris::tracts( # get all the tracts
   state = "MA",
-  county = "Suffolk") # from Suffolk County, Massachusetts 
+  county = "Suffolk") # from Suffolk County, Massachusetts
 ```
 
 The `tigris` package also has the nice `geo_join` function for joining the acs data with the spatial data.
@@ -119,8 +119,8 @@ In order to use `sp::over()` to aggregate the lat long points to the census trac
 ``` r
 # reverse geocoding: lat long to census tract
 heat <- SpatialPointsDataFrame(coords=heat_311[, c("Longitude", "Latitude")], # identify the lat long variables
-           data=heat_311[, c("neighborhood", "open_dt", "OnTime_Status", "CASE_STATUS", "LOCATION_STREET_NAME")], # identify the variables to keep 
-           proj4string=CRS("+proj=longlat +datum=WGS84")) # define the projection 
+           data=heat_311[, c("neighborhood", "open_dt", "OnTime_Status", "CASE_STATUS", "LOCATION_STREET_NAME")], # identify the variables to keep
+           proj4string=CRS("+proj=longlat +datum=WGS84")) # define the projection
 
 heat <- spTransform(heat, "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0") # standardize the projection to match the acs data
 ```
@@ -132,12 +132,12 @@ heat@data <- data.frame(heat@data, heat_tract) # combine data
 
 heat_tracts <- heat@data # pull out only the data
 
-# how many reports per census tract 
+# how many reports per census tract
 heat_tracts_calc <- heat_tracts %>%
   group_by(GEOID) %>% # per tract
   summarize(total = n(), # how many reports?
             estimate = mean(estimate)/1000, # and what's the median income, in thousands? Mean is just a filler function here to return the median value
-            moe = mean(moe)) # also a filler function. Could have used min or max also 
+            moe = mean(moe)) # also a filler function. Could have used min or max also
 ```
 
 Modeling a linear relationship
@@ -198,7 +198,7 @@ ggplot() +
   theme(axis.title = element_text())
 ```
 
-![]({{ site.url }}/assets/figure.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/figure.png)
 
 
 Thoughts and next steps

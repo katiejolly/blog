@@ -113,7 +113,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/water-lines/plain-map.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/water-lines/plain-map.png)
 
 ## Adding water lines
 
@@ -143,7 +143,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/water-lines/lines-map.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/water-lines/lines-map.png)
 
 ## More design tweaks
 
@@ -155,7 +155,7 @@ that I showed earlier.
 `ggplot2` gives us a few options. I’ll use dashed and dotted, but I
 think the others would look nice as well\!
 
-![]({{ site.url }}/assets/water-lines/linetypes.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/water-lines/linetypes.png)
 
 I first tried dashed lines:
 
@@ -174,7 +174,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/water-lines/dashed-map.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/water-lines/dashed-map.png)
 
 But I also really like the effect of dotted lines:
 
@@ -193,7 +193,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/water-lines/dotted-map.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/water-lines/dotted-map.png)
 
 It makes the lines *much* more understated. If I were choosing between
 different linetypes, my decision would depend on colors, medium,
@@ -247,7 +247,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/water-lines/full-dashed-map.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/water-lines/full-dashed-map.png)
 
 In the future I want to figure out how to use `purrr` to better draw
 this plot because that’s a lot of copy/pasting.

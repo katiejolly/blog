@@ -211,7 +211,7 @@ ggplot(x1, aes(x = keyword, y = prop, fill = response)) +
 ```
 <br><br>
 
-![frequency]({{ site.url }}/assets/saint-paul-parks/x1-1.png)
+![frequency](https://raw.githubusercontent.com/katiejolly/blog/master/assets/saint-paul-parks/x1-1.png)
 
 <br><br>
 
@@ -264,7 +264,7 @@ ggplot(x2, aes(x = keyword, y = prop, fill = response)) +
 
 <br><br>
 
-![opinion]({{ site.url }}/assets/saint-paul-parks/x2-1.png)
+![opinion](https://raw.githubusercontent.com/katiejolly/blog/master/assets/saint-paul-parks/x2-1.png)
 
 <br><br>
 
@@ -326,7 +326,7 @@ ggplot(x4, aes(x = keyword, y = prop, fill = response)) +
 
 <br><br>
 
-![investment]({{ site.url }}/assets/saint-paul-parks/x4-1.png)
+![investment](https://raw.githubusercontent.com/katiejolly/blog/master/assets/saint-paul-parks/x4-1.png)
 
 <br><br>
 
@@ -367,7 +367,7 @@ ggplot(x9, aes(x = participation, y = n)) +
 
 <br><br>
 
-![participation]({{ site.url }}/assets/saint-paul-parks/x9-1.png)
+![participation](https://raw.githubusercontent.com/katiejolly/blog/master/assets/saint-paul-parks/x9-1.png)
 
 <br><br>
 
@@ -400,7 +400,7 @@ ggplot(x10, aes(x = overall_quality_rating, y = n)) +
 
 <br><br>
 
-![overall quality rating]({{ site.url }}/assets/saint-paul-parks/x10-1.png)
+![overall quality rating](https://raw.githubusercontent.com/katiejolly/blog/master/assets/saint-paul-parks/x10-1.png)
 
 <br><br>
 
@@ -456,7 +456,7 @@ ggplot(x12, aes(x = keyword, y = prop, fill = response)) +
 
 <br><br>
 
-![types of recreation programs]({{ site.url }}/assets/saint-paul-parks/x12-1.png)
+![types of recreation programs](https://raw.githubusercontent.com/katiejolly/blog/master/assets/saint-paul-parks/x12-1.png)
 
 <br><br>
 

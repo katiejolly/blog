@@ -38,7 +38,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/park_map_final-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/park_map_final-1.png)
 
 # Intro
 
@@ -62,7 +62,7 @@ just not heavy CSS capabilities).
 ## Inner Glow
 
 First off, what is an inner glow? This map by [Sarah
-Bell](https://petrichor.studio/tag/cartography-tip/) uses an inner glow
+Bell]https://raw.githubusercontent.com/katiejolly/blog/master/ps://petrichor.studio/tag/cartography-tip/) uses an inner glow
 to create a “satin waterbody effect.”
 
 ![sarah bell waterbody
@@ -124,7 +124,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/basic_art_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/basic_art_map-1.png)
 
 ## Creating an inner glow in one neighborhood
 
@@ -141,7 +141,7 @@ And then get all of the neighborhoods that border it.
 bordering <- seattle_nb[st_touches(fremont, seattle_nb)[[1]],]
 ```
 
-![]({{ site.url }}/assets/inner-glow/fremont_basic_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/fremont_basic_map-1.png)
 
 Then we can also pull the public art installations that fall in Fremont
 as well as the surrounding neighborhoods.
@@ -152,7 +152,7 @@ art_fremont <- public_art[st_intersects(fremont, public_art)[[1]],]
 art_bordering <- public_art[st_intersects(bordering, public_art)[[1]],]
 ```
 
-![]({{ site.url }}/assets/inner-glow/fremont_art_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/fremont_art_map-1.png)
 
 
 Next we can start the inner glow process. The general idea is to create
@@ -172,7 +172,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/basic_glow-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/basic_glow-1.png)
 
 
 If you squint, you can see the faint shadowing around the edge. Adding a
@@ -187,7 +187,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/fremont_inner_glow-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/fremont_inner_glow-1.png)
 
 
 Now we can add the labels and surrounding neighborhoods again.
@@ -215,7 +215,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/labeled_art_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/labeled_art_map-1.png)
 
 
 To me, this is a pretty good shade and amount of glow. There’s no
@@ -238,7 +238,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/color_art_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/color_art_map-1.png)
 
 
 ## Another example with water
@@ -257,7 +257,7 @@ ggplot(green_lake) +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/green_lake-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/green_lake-1.png)
 
 
 To include some of the surrounding neighborhoods I’ll use cropping
@@ -272,7 +272,7 @@ ggplot(green_lk_nb) +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/green_lake_neighborhoods-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/green_lake_neighborhoods-1.png)
 
 
 The main differences with selecting neighborhoods this way are that (a)
@@ -289,7 +289,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/basic_lake_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/basic_lake_map-1.png)
 
 
 After looking at this map, I think that adding in Green Lake Park would
@@ -315,7 +315,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/park_map-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/park_map-1.png)
 
 
 Now we can do the same layering that we did before to get an inner glow
@@ -333,7 +333,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/park_map_glow-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/park_map_glow-1.png)
 
 
 Now we have a map of Green Lake with some depth\!
@@ -372,7 +372,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/park_map_labeled.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/park_map_labeled.png)
 
 
 I don’t like how the default labels look, so I want to move them around
@@ -402,7 +402,7 @@ ggplot() +
   theme_void()
 ```
 
-![]({{ site.url }}/assets/inner-glow/park_map_final-1.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/inner-glow/park_map_final-1.png)
 
 
 This map is pretty good for a sketch\! If there are other cartographic

@@ -17,7 +17,7 @@ spaces. The map design was done only with a few lines of code\! It was a
 great chance for me to practice some design techniques in R without
 being focused on doing any analysis since the result was purely visual.
 
-![preview of the final map]({{ site.url }}/assets/tacoma/finished_1.jpeg)
+![preview of the final map](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/finished_1.jpeg)
 
 ## Loading the data
 
@@ -84,7 +84,7 @@ ggplot(tacoma_roads) +
   labs(caption = "Roads in Tacoma")
 ```
 
-![map of the roads in tacoma]({{ site.url }}/assets/tacoma/roads.png)
+![map of the roads in tacoma](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/roads.png)
 
 We could stop here, but I really wanted to have the roads in a circular
 cutout. I thought it would look sharp and I wanted to learn how to do it
@@ -109,7 +109,7 @@ ggplot() +
   theme(panel.grid.major = element_line("transparent"))
 ```
 
-![buffer at 4000m]({{ site.url }}/assets/tacoma/4000m.png)
+![buffer at 4000m](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/4000m.png)
 
   - note: I used `st_union(tacoma_roads)` because otherwise it
     calculates the centroid of each road segment.
@@ -125,7 +125,7 @@ ggplot() +
   theme(panel.grid.major = element_line("transparent"))
 ```
 
-![buffer at 8000m]({{ site.url }}/assets/tacoma/8000m.png)
+![buffer at 8000m](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/8000m.png)
 
 A bit of an overcorrection in my opinion, though. I wanted the bottom of
 the circle to be within the bounds of the roads.
@@ -141,7 +141,7 @@ ggplot() +
   theme(panel.grid.major = element_line("transparent"))
 ```
 
-![buffer at 7000m]({{ site.url }}/assets/tacoma/7000m.png)
+![buffer at 7000m](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/7000m.png)
 
 Then I saved just the roads in the circle with `st_intersection(),`
 which finds the roads that overlap with the
@@ -164,16 +164,16 @@ ggplot(cropped_roads) +
   theme(panel.grid.major = element_line("transparent"))
 ```
 
-![buffer at 4000m]({{ site.url }}/assets/tacoma/circle.png)
+![buffer at 4000m](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/circle.png)
 
 I then brought this image into Inkscape to have more flexibility with
 the text elements.
 
-![version to print]({{ site.url }}/assets/tacoma/tacoma_roads_print.png)
+![version to print](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/tacoma_roads_print.png)
 
 
 To create the final product I watercolored in the map part of the
 design. That step was pretty optional in my opinion. I’d also be curious
 to know if there’s a way to get a watercolor effect in R\!
 
-![the finished product!]({{ site.url }}/assets/tacoma/finished_2.jpeg)
+![the finished product!](https://raw.githubusercontent.com/katiejolly/blog/master/assets/tacoma/finished_2.jpeg)

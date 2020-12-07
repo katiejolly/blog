@@ -8,7 +8,7 @@ comments: true
 
 The weekend before Valentine's Day, my friend Pippa and I were sitting at our kitchen table trying to decide how to celebrate. We wanted a way to show all of our friends how much we love and appreciate them! Complicating the Valentine's a bit is the fact that we have friends in multiple countries, so delivering something in person would be impossible and sending something through the mail would add up quickly. Fairly quickly we decided to send something via email. We put out a post on Facebook asking people to respond if they wanted a valentine from us. With those responses plus people we added, we had 34 people on the list!
 
-![facebook post screen capture]({{ site.url }}/assets/conversation_hearts/facebook_post.JPG)
+![facebook post screen capture](https://raw.githubusercontent.com/katiejolly/blog/master/assets/conversation_hearts/facebook_post.JPG)
 
 
 We were talking about the poem generator I'd built a few weeks ago and thought somewhere similar to that would be a good place to start. I'd read Sarah Lotspeich and Lucy D'Agostino McGowan's [secret sampling](http://livefreeordichotomize.com/2017/11/15/secret-sampling/) post about sending emails through R will `ponyexpress`. They'd used it to send messages about secret santa over the holidays, but it seemed like we could use that idea for sending valentines! The final idea was to randomly generate a conversation heart for each of our friends with markov chains and then send them via email with `ponyexpress`. This would also give me a chance to use the `markovifyR` package that I'd heard such good things about!
@@ -20,7 +20,7 @@ To start, we needed to read in the sheets from google with `googlesheets` packag
 ``` r
 # packages
 
-library(googlesheets) # read in the sheet 
+library(googlesheets) # read in the sheet
 library(tidyverse) # clean the text
 library(markovifyR) # make the markov chains
 library(magick) # image processing
@@ -71,7 +71,7 @@ texts_to_annotate <- markovify_text( # make the strings
   output_column_name = 'heart_sayings',
   count = 100,
   tries = 600,
-  only_distinct = TRUE, # we still just wanted distinct messages 
+  only_distinct = TRUE, # we still just wanted distinct messages
   return_message = FALSE
 )
 
@@ -121,7 +121,7 @@ for (i in 1:nrow(friends)){
   img <- heart %>% # start with the base image
             image_scale("600") %>% # make it big! <3
             image_annotate(friends$text[[i]], color = "white", gravity = "center", size = 40) %>% # write the generated text in white in the middle of the heart with size 40 font
-            image_write(path = path, format = "png") # save the image as {name}.png 
+            image_write(path = path, format = "png") # save the image as {name}.png
 
 }
 
@@ -158,7 +158,7 @@ Happy Valentine's Day!! We made a special heart just for you :D
 (As an aside, we randomly generated the text with R and have no idea what we sent to you. Ask Katie if you want to know more!)
 
 
-We love having you in our lives and wanted to take the time to tell you! 
+We love having you in our lives and wanted to take the time to tell you!
 
 
 Much love to you <3
@@ -201,7 +201,7 @@ parcel_preview(parcel)
 
 It produced this card!
 
-![valentine card]({{ site.url }}/assets/conversation_hearts/valentine.JPG)
+![valentine card](https://raw.githubusercontent.com/katiejolly/blog/master/assets/conversation_hearts/valentine.JPG)
 
 We loved the cards we were able to make! And we got lots of replies from friends who similarly loved the cards :D
 

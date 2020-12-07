@@ -90,7 +90,7 @@ paper <- load_image("paper")
 paper
 ```
 
-![]({{ site.url }}/assets/advicegiveR/paper.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/advicegiveR/paper.png)
 
 Finally let's make the poster!
 
@@ -100,7 +100,7 @@ You can specify the text size and color if you so choose.
 print_advice(image = paper, advice = advice, textcolor = "black")
 ```
 
-![]({{ site.url }}/assets/advicegiveR/paper_annotated.png)
+![](https://raw.githubusercontent.com/katiejolly/blog/master/assets/advicegiveR/paper_annotated.png)
 
 There are more examples (and source code) in the [GitHub repo](https://github.com/katiejolly/advicegiveR) for this package.
 
