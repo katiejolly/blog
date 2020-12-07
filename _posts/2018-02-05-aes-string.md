@@ -53,23 +53,23 @@ poll_lm <- lm(election_result ~ poll_average, data = poll_data)
 summary(poll_lm)
 ```
 
-    ## 
+    ##
     ## Call:
     ## lm(formula = election_result ~ poll_average, data = poll_data)
-    ## 
+    ##
     ## Residuals:
-    ##      Min       1Q   Median       3Q      Max 
-    ## -29.4281  -5.0197   0.5601   6.1364  17.9357 
-    ## 
+    ##      Min       1Q   Median       3Q      Max
+    ## -29.4281  -5.0197   0.5601   6.1364  17.9357
+    ##
     ## Coefficients:
     ##              Estimate Std. Error t value Pr(>|t|)    
     ## (Intercept)  -0.89110    0.76969  -1.158     0.25    
     ## poll_average  1.04460    0.03777  27.659   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
+    ##
     ## Residual standard error: 7.93 on 105 degrees of freedom
-    ## Multiple R-squared:  0.8793, Adjusted R-squared:  0.8782 
+    ## Multiple R-squared:  0.8793, Adjusted R-squared:  0.8782
     ## F-statistic:   765 on 1 and 105 DF,  p-value: < 2.2e-16
 
 I'm just going to focus on plotting the resulting line with the original data points.
@@ -80,13 +80,13 @@ I knew the code I needed to create the plot.
 augment(poll_lm) %>%
   ggplot() +
     geom_point(aes(x = poll_average, y = election_result), color = "#2CA58D") +
-    geom_line(aes(x = poll_average, y = .fitted), color = "#033F63") + 
+    geom_line(aes(x = poll_average, y = .fitted), color = "#033F63") +
     theme_solarized() +
     theme(axis.title = element_text()) +
     labs(x = "Poll average", y = "Election results")
 ```
 
-![original plot]({{ site.url }}/assets/aes/aes1.png)
+![original plot](https://raw.githubusercontent.com/katiejolly/blog/master/assets/aes/aes1.png)
 
 But I wanted a way to have a function that takes the model, response, and explanatory variables!
 
@@ -133,7 +133,7 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 plot_model(poll_lm, "poll_average", "election_result")
 ```
 
-![fixed plot]({{ site.url }}/assets/aes/aes2.png)
+![fixed plot](https://raw.githubusercontent.com/katiejolly/blog/master/assets/aes/aes2.png)
 
 Ta-da! Even though this is a simple example, it will be so helpful for me in the future! I'm sure there are other ways to solve this problem, so I'd love to know your favorite fix for programming with `ggplot2`.
 
@@ -156,4 +156,4 @@ plot_model <- function(mod, explanatory, response, .fitted = ".fitted") {
 plot_model(poll_lm, "poll_average", "election_result") + labs(x = "Poll average", y = "Election results")
 ```
 
-Running this code would give the same plot, just without the hardcoded axis labels. 
+Running this code would give the same plot, just without the hardcoded axis labels.

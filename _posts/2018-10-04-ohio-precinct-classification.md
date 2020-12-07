@@ -20,7 +20,7 @@ In June we started with a list of the 88 counties in Ohio. For each county we lo
 
 In this post I'll discuss how we approximated precinct boundaries for those counties that didn't have any maps. There are a variety of ways to do this and we chose the one we could do in the amount of time we had given our resources.
 
-![Image of the shapefiles and PDF maps we received]({{ site.url }}/assets/ohio/ohio-art.png)
+![Image of the shapefiles and PDF maps we received](https://raw.githubusercontent.com/katiejolly/blog/master/assets/ohio/ohio-art.png)
 
 What to do when there's no map?
 -------------------------------
@@ -35,7 +35,7 @@ Geocoding is important for this project because it is essentially how we will tr
 
 In broad strokes, our algorithm takes the geocoded addresses (with the information about what precinct the voter is assigned to) and assigns precinct boundaries by census block. So it finds the blocks that already have valid addresses, usually 40-60% of the blocks, and assigns it to the most common precinct designation of the voters. Then for the unclassified blocks, we classify them based on their rook-contiguity neighbors. I'll illustrate this process using Noble County as an example below.
 
-![Noble County (courtesy of David Cater)]({{ site.url }}/assets/ohio/noble.jpg)
+![Noble County (courtesy of David Cater)](https://raw.githubusercontent.com/katiejolly/blog/master/assets/ohio/noble.jpg)
 
 
 #### Step 1: Getting the block IDs
@@ -82,7 +82,7 @@ Once we have those GEOids, we can run our classification algorithm to approximat
 
 The general structure of our algorithm is diagrammed below. Essentially we geocode the addresses, classify blocks with voters in them, then use rook neighbors to classify any unclassified blocks.
 
-![Steps of the algorithm]({{ site.url }}/assets/ohio/geocode_flowchart.png)
+![Steps of the algorithm](https://raw.githubusercontent.com/katiejolly/blog/master/assets/ohio/geocode_flowchart.png)
 
 Below are the functions we'll need for the main classification algorithm.
 
@@ -271,7 +271,7 @@ After several iterations we have 0 unclassified blocks.
 
 I've created an animation below that details visually how the algorithm works. You can follow along with the bars to see how many unclassified blocks remain after each run.
 
-![GIF of interations to built precinct shapefile in Noble County]({{ site.url }}/assets/ohio/iterations.gif)
+![GIF of interations to built precinct shapefile in Noble County](https://raw.githubusercontent.com/katiejolly/blog/master/assets/ohio/iterations.gif)
 
 At this point we've created our precinct shapefile! We can dissolve on the `PRECINCT_NAME` field to get single polygons for each one, instead of having them as blocks.
 
