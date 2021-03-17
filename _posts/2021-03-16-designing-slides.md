@@ -194,6 +194,7 @@ I added a new file `custom.css` to the same directory as my slides
 document. In that document, I added one of the code chunks from the
 article I linked:
 
+```
     ul {
       list-style: none;
     }
@@ -202,9 +203,11 @@ article I linked:
       content: "• ";
       color: red;
     }
+```
 
 But instead of red, I want to use \#EFBE43 (the dark yellow color):
 
+```
     ul {
       list-style: none;
     }
@@ -213,6 +216,7 @@ But instead of red, I want to use \#EFBE43 (the dark yellow color):
       content: "• ";
       color: #EFBE43;
     }
+```
 
 Once I’ve created this file, I’ll add a link to it in the YAML header
 for the slides in the already existing css line. Keep the link to the
@@ -223,6 +227,15 @@ original `xaringan-themer.css` as well, though!
 Now when I render the slides I see the updated bullet point styling.
 
 <img src="https://raw.githubusercontent.com/katiejolly/blog/master/assets/slide-design/ul_color.png" style="width:70.0%" />
+
+Edit: There is an easier way to change the bullet point color, thanks to [Alison Hill for the suggestion](https://twitter.com/apreshill/status/1372259484509339650?s=20)!
+
+```
+li::marker {
+  content: "• ";
+  color: #EFBE43;
+}
+```
 
 There are tons of other edits that are possible, but this gives me a
 template very close to the original design specs! Templating like this
