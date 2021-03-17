@@ -20,7 +20,7 @@ you:
     {xaringanthemer}
 
 In order to walk through the process I’ll show you what I would do if I
-wanted to use the poster for the meetup event at the design inspiration.
+wanted to use the poster for the meetup event as the design inspiration.
 
 <img src="https://raw.githubusercontent.com/katiejolly/blog/master/assets/slide-design/twitter_img_march.png" style="width:70.0%" />
 
@@ -192,7 +192,7 @@ changing the assigned color.
 
 I added a new file `custom.css` to the same directory as my slides
 document. In that document, I added one of the code chunks from the
-article I linked.:
+article I linked:
 
     ul {
       list-style: none;
@@ -220,7 +220,7 @@ original `xaringan-themer.css` as well, though!
 
 `css: [xaringan-themer.css, custom.css]`
 
-Now when I render the slides I see the updated bullet point styling
+Now when I render the slides I see the updated bullet point styling.
 
 <img src="https://raw.githubusercontent.com/katiejolly/blog/master/assets/slide-design/ul_color.png" style="width:70.0%" />
 
